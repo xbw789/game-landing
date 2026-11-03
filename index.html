@@ -6,97 +6,97 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<title>DramaBuzz - স্বল্পদৈর্ঘ্য নাটক দেখুন</title>
+<title>DramaBuzz - Trending Drama</title>
 
 <style>
 
-*{margin:0;padding:0;box-sizing:border-box}
+  :root {
 
-body{font-family:'Segoe UI',Arial,sans-serif;background:#0f0f1a;color:#fff;line-height:1.6}
+    --bg: #0b0b12;
 
+    --card: #161622;
 
+    --accent: #e94560;
 
-.header{display:flex;align-items:center;gap:10px;padding:14px 20px;background:rgba(0,0,0,.85);position:sticky;top:0;z-index:100}
+    --text: #ffffff;
 
-.logo-text{font-size:20px;font-weight:bold;color:#e94560}
+    --sub: #aaaaaa;
 
+  }
 
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; }
 
-.hero{text-align:center;padding:36px 20px 10px}
+  body { background: var(--bg); color: var(--text); line-height: 1.5; padding-bottom: 70px; }
 
-.hero h1{font-size:30px;color:#e94560;margin-bottom:8px}
+  
 
-.hero .en{font-size:16px;color:#e0e0e0}
+  /* Header */
 
-.hero .bn{font-size:14px;color:#9a9a9a;margin-bottom:18px}
+  header { display: flex; align-items: center; padding: 15px 20px; background: var(--bg); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #222; }
 
+  .logo-img { width: 40px; height: 40px; margin-right: 10px; border-radius: 8px; }
 
+  h1 { font-size: 24px; color: var(--accent); font-weight: 800; letter-spacing: 1px; }
 
-.download-btn{
+  
 
-  display:inline-block;padding:16px 44px;background:linear-gradient(135deg,#e94560,#ff6b6b);
+  /* Hero */
 
-  color:#fff;text-decoration:none;border-radius:50px;font-size:18px;font-weight:bold;
+  .hero { padding: 20px; text-align: center; }
 
-  box-shadow:0 4px 22px rgba(233,69,96,.5);animation:pulse 2s infinite
+  .hero-img { width: 100%; max-width: 400px; border-radius: 16px; margin: 0 auto 15px; display: block; box-shadow: 0 8px 24px rgba(233,69,96,0.15); }
 
-}
+  .top-btn { display: inline-block; background: var(--accent); color: #fff; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 18px; }
 
-@keyframes pulse{0%,100%{box-shadow:0 4px 22px rgba(233,69,96,.5)}50%{box-shadow:0 4px 38px rgba(233,69,96,.85)}}
+  
 
-.version{font-size:12px;color:#666;margin-top:8px}
+  /* Features */
 
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 20px 20px; }
 
+  .item { background: var(--card); padding: 15px; border-radius: 14px; text-align: center; }
 
-.features{padding:26px 20px}
+  .item div { font-size: 28px; margin-bottom: 5px; }
 
-.features h2{color:#e94560;text-align:center;margin-bottom:14px}
+  .en { font-weight: bold; font-size: 15px; }
 
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .bn { color: var(--sub); font-size: 13px; margin-top: 2px; }
 
-.item{background:rgba(255,255,255,.06);border-radius:12px;padding:14px;text-align:center}
+  
 
-.item .en{font-size:14px;color:#e0e0e0}
+  /* Shows */
 
-.item .bn{font-size:12px;color:#888}
+  .shows { padding: 20px; }
 
+  h2 { color: var(--accent); font-size: 22px; margin-bottom: 15px; }
 
+  .row { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 10px; }
 
-.shows{padding:10px 20px 26px}
+  .row img { width: 140px; height: 200px; border-radius: 12px; object-fit: cover; flex-shrink: 0; background: #222; }
 
-.shows h2{color:#e94560;margin-bottom:12px}
+  
 
-.row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px}
+  /* Install Steps */
 
-.row img{width:120px;height:175px;border-radius:10px;object-fit:cover;flex-shrink:0;background:#222}
+  .install { padding: 20px; }
 
+  .step { display: flex; align-items: center; background: var(--card); padding: 15px; border-radius: 14px; margin-bottom: 12px; }
 
+  .step span { background: var(--accent); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px; flex-shrink: 0; }
 
-.install{padding:10px 20px 30px}
+  
 
-.install h2{color:#e94560;margin-bottom:12px}
+  /* Sticky Download */
 
-.step{display:flex;gap:10px;background:rgba(255,255,255,.05);padding:12px;border-radius:12px;margin-bottom:8px}
+  .sticky { position: fixed; bottom: 0; left: 0; right: 0; background: var(--accent); color: #fff; text-align: center; padding: 16px; font-size: 18px; font-weight: bold; text-decoration: none; z-index: 200; box-shadow: 0 -4px 15px rgba(0,0,0,0.4); transform: translateY(100%); transition: 0.3s; }
 
-.step span{background:#e94560;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0}
+  .sticky.show { transform: translateY(0); }
 
-.step .en{font-size:14px}
+  
 
-.step .bn{font-size:12px;color:#888}
-
-
-
-.sticky{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(135deg,#e94560,#ff6b6b);
-
-  text-align:center;padding:14px;font-weight:bold;color:#fff;text-decoration:none;display:none;z-index:999}
-
-.sticky.show{display:block}
-
-
-
-.footer{text-align:center;padding:20px;color:#555;font-size:12px;margin-bottom:56px}
+  footer { text-align: center; padding: 20px; color: var(--sub); font-size: 12px; }
 
 </style>
 
@@ -106,9 +106,21 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f0f1a;color:#fff;line-
 
 
 
-<header class="header">
+<header>
 
-  <span class="logo-text">🎬 DramaBuzz</span>
+  <!-- 内联SVG Logo -->
+
+  <svg class="logo-img" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+
+    <rect width="100" height="100" rx="16" fill="#e94560"/>
+
+    <path d="M20 40 L80 40 L80 75 L20 75 Z" fill="none" stroke="#fff" stroke-width="6"/>
+
+    <path d="M35 30 L35 40 M50 30 L50 40 M65 30 L65 40" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+
+  </svg>
+
+  <h1>DramaBuzz</h1>
 
 </header>
 
@@ -116,25 +128,21 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f0f1a;color:#fff;line-
 
 <section class="hero">
 
-  <h1>DramaBuzz</h1>
+  <!-- 内联SVG主图 -->
 
-  <p class="en">Watch Short Dramas Anytime, Anywhere</p>
+  <svg class="hero-img" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
 
-  <p class="bn">যেকোনো সময়, যেকোনো জায়গায় স্বল্পদৈর্ঘ্য নাটক দেখুন</p>
+    <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#222"/><stop offset="1" stop-color="#0b0b12"/></linearGradient></defs>
 
+    <rect width="400" height="500" rx="16" fill="url(#g1)"/>
 
+    <text x="200" y="220" text-anchor="middle" font-size="32" font-weight="bold" fill="#e94560">DramaBuzz</text>
 
-  <a class="download-btn" id="dlTop"
+    <text x="200" y="260" text-anchor="middle" font-size="18" fill="#aaa">Trending Short Dramas</text>
 
-     href="https://kepj273g1ker.xalvioncraft.com/Upcc1RsKbcDc"
+  </svg>
 
-     download="DramaBuzz.apk">
-
-    📲 Download APK
-
-  </a>
-
-  <p class="version">v1.0.3 | ~25MB | Android 5.0+</p>
+  <a class="top-btn" id="dlTop" href="https://kepj273g1ker.xalvioncraft.com/Upcc1RsKbcDc" download="DramaBuzz.apk">📲 Download APK</a>
 
 </section>
 
@@ -142,19 +150,13 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f0f1a;color:#fff;line-
 
 <section class="features">
 
-  <h2>✨ Why Choose DramaBuzz?</h2>
+  <div class="item"><div>📥</div><p class="en">Offline download</p><p class="bn">অফলাইনে ডাউনলোড</p></div>
 
-  <div class="grid">
+  <div class="item"><div>🎭</div><p class="en">Romance / Action</p><p class="bn">রোমান্স / অ্যাকশন</p></div>
 
-    <div class="item"><div>🔥</div><p class="en">Trending daily</p><p class="bn">প্রতিদিন ট্রেন্ডিং নাটক</p></div>
+  <div class="item"><div>⚡</div><p class="en">Low data use</p><p class="bn">কম ডেটা খরচ</p></div>
 
-    <div class="item"><div>📥</div><p class="en">Offline download</p><p class="bn">অফলাইনে ডাউনলোড</p></div>
-
-    <div class="item"><div>🎭</div><p class="en">Romance / Action</p><p class="bn">রোমান্স / অ্যাকশন</p></div>
-
-    <div class="item"><div>⚡</div><p class="en">Low data use</p><p class="bn">কম ডেটা খরচ</p></div>
-
-  </div>
+  <div class="item"><div>🔥</div><p class="en">Daily Trending</p><p class="bn">প্রতিদিন ট্রেন্ডিং</p></div>
 
 </section>
 
@@ -166,11 +168,47 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f0f1a;color:#fff;line-
 
   <div class="row">
 
-    <img src="assets/show1.webp" alt="show1">
+    <!-- 内联SVG剧集1 -->
 
-    <img src="assets/show2.webp" alt="show2">
+    <svg width="140" height="200" viewBox="0 0 140 200" xmlns="http://www.w3.org/2000/svg">
 
-    <img src="assets/show3.webp" alt="show3">
+      <rect width="140" height="200" rx="12" fill="#1a1a24"/>
+
+      <rect x="20" y="40" width="100" height="120" rx="8" fill="#222"/>
+
+      <text x="70" y="105" text-anchor="middle" font-size="16" fill="#e94560" font-weight="bold">SHOW 1</text>
+
+      <text x="70" y="130" text-anchor="middle" font-size="12" fill="#aaa">Romance</text>
+
+    </svg>
+
+    <!-- 内联SVG剧集2 -->
+
+    <svg width="140" height="200" viewBox="0 0 140 200" xmlns="http://www.w3.org/2000/svg">
+
+      <rect width="140" height="200" rx="12" fill="#1a1a24"/>
+
+      <rect x="20" y="40" width="100" height="120" rx="8" fill="#222"/>
+
+      <text x="70" y="105" text-anchor="middle" font-size="16" fill="#e94560" font-weight="bold">SHOW 2</text>
+
+      <text x="70" y="130" text-anchor="middle" font-size="12" fill="#aaa">Action</text>
+
+    </svg>
+
+    <!-- 内联SVG剧集3 -->
+
+    <svg width="140" height="200" viewBox="0 0 140 200" xmlns="http://www.w3.org/2000/svg">
+
+      <rect width="140" height="200" rx="12" fill="#1a1a24"/>
+
+      <rect x="20" y="40" width="100" height="120" rx="8" fill="#222"/>
+
+      <text x="70" y="105" text-anchor="middle" font-size="16" fill="#e94560" font-weight="bold">SHOW 3</text>
+
+      <text x="70" y="130" text-anchor="middle" font-size="12" fill="#aaa">Drama</text>
+
+    </svg>
 
   </div>
 
@@ -184,7 +222,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f0f1a;color:#fff;line-
 
   <div class="step"><span>1</span><div><p class="en">Tap Download APK</p><p class="bn">ডাউনলোড বাটনে ক্লিক করুন</p></div></div>
 
-  <div class="step"><span>2</span><div><p class="en">Allow "Unknown sources" in settings</p><p class="bn">সেটিংসে "অজানা উৎস" অনুমতি দিন</p></div></div>
+  <div class="step"><span>2</span><div><p class="en">Allow "Unknown sources"</p><p class="bn">সেটিংসে "অজানা উৎস" অনুমতি দিন</p></div></div>
 
   <div class="step"><span>3</span><div><p class="en">Open file & install</p><p class="bn">ফাইল ওপেন করে ইনস্টল করুন</p></div></div>
 
@@ -198,11 +236,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f0f1a;color:#fff;line-
 
 
 
-<footer class="footer">
-
-  © 2024 DramaBuzz | support@dramabuzz.com
-
-</footer>
+<footer>© 2024 DramaBuzz | support@dramabuzz.com</footer>
 
 
 
@@ -213,8 +247,6 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f0f1a;color:#fff;line-
   const stickyBtn = document.getElementById('dlSticky');
 
 
-
-  // 防止重复点击
 
   [topBtn, stickyBtn].forEach(btn => {
 
@@ -229,8 +261,6 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f0f1a;color:#fff;line-
   });
 
 
-
-  // 滚动显示吸底按钮
 
   window.addEventListener('scroll', () => {
 
