@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="bn">
 
 <head>
 
@@ -8,133 +8,95 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fun Games BD - Download Now</title>
+<title>DramaBuzz - স্বল্পদৈর্ঘ্য নাটক দেখুন</title>
 
 <style>
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+*{margin:0;padding:0;box-sizing:border-box}
 
-body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; color: #fff; }
+body{font-family:'Segoe UI',Arial,sans-serif;background:#0f0f1a;color:#fff;line-height:1.6}
 
 
 
-.container { max-width: 480px; margin: 0 auto; padding: 20px; }
+.header{display:flex;align-items:center;gap:10px;padding:14px 20px;background:rgba(0,0,0,.85);position:sticky;top:0;z-index:100}
 
+.logo-text{font-size:20px;font-weight:bold;color:#e94560}
 
 
-/* Header */
 
-header { text-align: center; padding: 30px 0 20px; }
+.hero{text-align:center;padding:36px 20px 10px}
 
-header h1 { font-size: 28px; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+.hero h1{font-size:30px;color:#e94560;margin-bottom:8px}
 
-header p { font-size: 14px; opacity: 0.9; margin-top: 8px; }
+.hero .en{font-size:16px;color:#e0e0e0}
 
+.hero .bn{font-size:14px;color:#9a9a9a;margin-bottom:18px}
 
 
-/* Language Switch */
 
-.lang-switch { position: absolute; top: 15px; right: 15px; }
+.download-btn{
 
-.lang-switch button { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 12px; margin-left: 5px; }
+  display:inline-block;padding:16px 44px;background:linear-gradient(135deg,#e94560,#ff6b6b);
 
-.lang-switch button.active { background: rgba(255,255,255,0.4); }
+  color:#fff;text-decoration:none;border-radius:50px;font-size:18px;font-weight:bold;
 
+  box-shadow:0 4px 22px rgba(233,69,96,.5);animation:pulse 2s infinite
 
+}
 
-/* Hero Image */
+@keyframes pulse{0%,100%{box-shadow:0 4px 22px rgba(233,69,96,.5)}50%{box-shadow:0 4px 38px rgba(233,69,96,.85)}}
 
-.hero { text-align: center; margin: 20px 0; }
+.version{font-size:12px;color:#666;margin-top:8px}
 
-.hero img { max-width: 100%; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
 
 
+.features{padding:26px 20px}
 
-/* Download Button */
+.features h2{color:#e94560;text-align:center;margin-bottom:14px}
 
-.download-btn { display: block; width: 100%; padding: 18px; background: linear-gradient(135deg, #ff6b6b, #ff8e53); color: #fff; text-align: center; text-decoration: none; border-radius: 14px; font-size: 18px; font-weight: 700; margin: 20px 0; box-shadow: 0 6px 20px rgba(255,107,107,0.4); animation: pulse 2s infinite; }
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 
-@keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+.item{background:rgba(255,255,255,.06);border-radius:12px;padding:14px;text-align:center}
 
+.item .en{font-size:14px;color:#e0e0e0}
 
+.item .bn{font-size:12px;color:#888}
 
-/* Mirror Links */
 
-.mirror-links { text-align: center; font-size: 12px; opacity: 0.8; margin-bottom: 20px; }
 
-.mirror-links a { color: #fff; text-decoration: underline; margin: 0 4px; }
+.shows{padding:10px 20px 26px}
 
+.shows h2{color:#e94560;margin-bottom:12px}
 
+.row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px}
 
-/* Features */
+.row img{width:120px;height:175px;border-radius:10px;object-fit:cover;flex-shrink:0;background:#222}
 
-.features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 25px 0; }
 
-.feature-card { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: 12px; padding: 16px; text-align: center; }
 
-.feature-card .icon { font-size: 28px; margin-bottom: 8px; }
+.install{padding:10px 20px 30px}
 
-.feature-card h3 { font-size: 14px; margin-bottom: 4px; }
+.install h2{color:#e94560;margin-bottom:12px}
 
-.feature-card p { font-size: 11px; opacity: 0.8; }
+.step{display:flex;gap:10px;background:rgba(255,255,255,.05);padding:12px;border-radius:12px;margin-bottom:8px}
 
+.step span{background:#e94560;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0}
 
+.step .en{font-size:14px}
 
-/* Games */
+.step .bn{font-size:12px;color:#888}
 
-.games { margin: 25px 0; }
 
-.games h2 { font-size: 20px; margin-bottom: 15px; text-align: center; }
 
-.game-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.sticky{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(135deg,#e94560,#ff6b6b);
 
-.game-item { background: rgba(255,255,255,0.12); border-radius: 10px; padding: 14px; text-align: center; }
+  text-align:center;padding:14px;font-weight:bold;color:#fff;text-decoration:none;display:none;z-index:999}
 
-.game-item .emoji { font-size: 32px; margin-bottom: 6px; }
+.sticky.show{display:block}
 
-.game-item span { font-size: 13px; font-weight: 600; }
 
 
-
-/* Steps */
-
-.steps { margin: 25px 0; }
-
-.steps h2 { font-size: 20px; margin-bottom: 15px; text-align: center; }
-
-.step { display: flex; align-items: center; background: rgba(255,255,255,0.12); border-radius: 10px; padding: 14px; margin-bottom: 10px; }
-
-.step .num { width: 32px; height: 32px; background: linear-gradient(135deg, #ff6b6b, #ff8e53); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin-right: 12px; flex-shrink: 0; }
-
-.step-text { font-size: 14px; }
-
-
-
-/* Bottom Download */
-
-.bottom-download { margin: 30px 0 20px; }
-
-
-
-/* Disclaimer */
-
-.disclaimer { text-align: center; font-size: 11px; opacity: 0.6; padding: 15px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px; }
-
-
-
-/* BN text */
-
-.bn { display: none; }
-
-body.bangla .en { display: none; }
-
-body.bangla .bn { display: inline; }
-
-body.bangla .feature-card p,
-
-body.bangla .step-text,
-
-body.bangla .disclaimer { font-family: 'SolaimanLipi', sans-serif; }
+.footer{text-align:center;padding:20px;color:#555;font-size:12px;margin-bottom:56px}
 
 </style>
 
@@ -142,255 +104,141 @@ body.bangla .disclaimer { font-family: 'SolaimanLipi', sans-serif; }
 
 <body>
 
-<div class="lang-switch">
-
-  <button class="active" onclick="setLang('en')">EN</button>
-
-  <button onclick="setLang('bn')">বাং</button>
-
-</div>
 
 
+<header class="header">
 
-<div class="container">
+  <span class="logo-text">🎬 DramaBuzz</span>
 
-  <header>
-
-    <h1><span class="en">🎮 Fun Games BD</span><span class="bn">🎮 ফান গেমস বিডি</span></h1>
-
-    <p class="en">Play • Compete • Win — Download Now!</p>
-
-    <p class="bn">খেলুন • প্রতিযোগিতা করুন • জিতুন — এখনই ডাউনলোড করুন!</p>
-
-  </header>
+</header>
 
 
 
-  <div class="hero">
+<section class="hero">
 
-    <img src="poster1.jpg" alt="Fun Games BD" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nNDAwJyBoZWlnaHQ9JzIwMCcgdmlld0JveD0nMCAwIDQwMCAyMDAnIGZpbGw9J25vbmUnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHJlY3Qgd2lkdGg9JzQwMCcgaGVpZ2h0PScyMDAnIHJ4PScxNScgZmlsbD0ndXJsKCNncmFkKScvPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0nZ3JhZCcgeDE9JzAnIHkxPScwJyB4Mj0nNDAwJyB5Mj0nMjAwJyBncmFkaWVudFVuaXRzPSd1c2VyU3BhY2VPblVzZSc+PHN0b3Agc3RvcC1jb2xvcj0nIzZmNmVmZicvPjxzdG9wIG9mZnNldD0nMScgc3RvcC1jb2xvcj0nIzZjNjJmZicvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjx0ZXh0IHg9JzIwMCcgeT0nMTA1JyBmb250LXNpemU9JzM2JyBmaWxsPSd3aGl0ZScgdGV4dC1hbmNob3I9J21pZGRsZScgZG9taW5hbnQtYmFzZWxpbmU9J21pZGRsZSc+8J+TbiBGdW4gR2FtZXM8L3RleHQ+PC9zdmc+'">
+  <h1>DramaBuzz</h1>
 
-  </div>
+  <p class="en">Watch Short Dramas Anytime, Anywhere</p>
+
+  <p class="bn">যেকোনো সময়, যেকোনো জায়গায় স্বল্পদৈর্ঘ্য নাটক দেখুন</p>
 
 
 
-  <a class="download-btn" href="https://dl.6netq7o.top/3d1jcdziiz" target="_blank" rel="noopener">
+  <a class="download-btn" id="dlTop"
 
-    <span class="en">⬇️ DOWNLOAD APK NOW</span>
+     href="https://kepj273g1ker.xalvioncraft.com/Upcc1RsKbcDc"
 
-    <span class="bn">⬇️ এখনই APK ডাউনলোড করুন</span>
+     download="DramaBuzz.apk">
+
+    📲 Download APK
 
   </a>
 
+  <p class="version">v1.0.3 | ~25MB | Android 5.0+</p>
 
-
-  <div class="mirror-links">
-
-    <span class="en">Mirror:</span>
-
-    <span class="bn">মিরর:</span>
-
-    <a href="https://dl.gnnjqml.top/3d1jcdziiz" target="_blank" rel="noopener">1</a>
-
-    <a href="https://dl.n0oldlpw.top/3d1jcdziiz" target="_blank" rel="noopener">2</a>
-
-    <a href="https://dl.nswjdo9.top/3d1jcdziiz" target="_blank" rel="noopener">3</a>
-
-  </div>
+</section>
 
 
 
-  <div class="features">
+<section class="features">
 
-    <div class="feature-card">
+  <h2>✨ Why Choose DramaBuzz?</h2>
 
-      <div class="icon">🎯</div>
+  <div class="grid">
 
-      <h3 class="en">Easy to Play</h3>
+    <div class="item"><div>🔥</div><p class="en">Trending daily</p><p class="bn">প্রতিদিন ট্রেন্ডিং নাটক</p></div>
 
-      <h3 class="bn">খেলতে সহজ</h3>
+    <div class="item"><div>📥</div><p class="en">Offline download</p><p class="bn">অফলাইনে ডাউনলোড</p></div>
 
-      <p class="en">Simple controls, instant fun</p>
+    <div class="item"><div>🎭</div><p class="en">Romance / Action</p><p class="bn">রোমান্স / অ্যাকশন</p></div>
 
-      <p class="bn">সহজ নিয়ন্ত্রণ, তাৎক্ষণিক মজা</p>
-
-    </div>
-
-    <div class="feature-card">
-
-      <div class="icon">🌐</div>
-
-      <h3 class="en">Multiplayer</h3>
-
-      <h3 class="bn">মাল্টিপ্লেয়ার</h3>
-
-      <p class="en">Play with friends online</p>
-
-      <p class="bn">বন্ধুদের সাথে অনলাইনে খেলুন</p>
-
-    </div>
-
-    <div class="feature-card">
-
-      <div class="icon">🎁</div>
-
-      <h3 class="en">Daily Rewards</h3>
-
-      <h3 class="bn">দৈনিক পুরস্কার</h3>
-
-      <p class="en">Login daily for bonuses</p>
-
-      <p class="bn">বোনাসের জন্য প্রতিদিন লগইন করুন</p>
-
-    </div>
-
-    <div class="feature-card">
-
-      <div class="icon">🏆</div>
-
-      <h3 class="en">Tournaments</h3>
-
-      <h3 class="bn">টুর্নামেন্ট</h3>
-
-      <p class="en">Compete & climb leaderboard</p>
-
-      <p class="bn">প্রতিযোগিতা করুন এবং লিডারবোর্ডে উঠুন</p>
-
-    </div>
+    <div class="item"><div>⚡</div><p class="en">Low data use</p><p class="bn">কম ডেটা খরচ</p></div>
 
   </div>
 
+</section>
 
 
-  <div class="games">
 
-    <h2 class="en">🎲 Popular Games</h2>
+<section class="shows">
 
-    <h2 class="bn">🎲 জনপ্রিয় গেমস</h2>
+  <h2>🔥 Trending Now / ট্রেন্ডিং</h2>
 
-    <div class="game-grid">
+  <div class="row">
 
-      <div class="game-item"><div class="emoji">🎯</div><span class="en">Ludo King</span><span class="bn">লুডো কিং</span></div>
+    <img src="assets/show1.webp" alt="show1">
 
-      <div class="game-item"><div class="emoji">🃏</div><span class="en">Card Masters</span><span class="bn">কার্ড মাস্টার্স</span></div>
+    <img src="assets/show2.webp" alt="show2">
 
-      <div class="game-item"><div class="emoji">🀄</div><span class="en">Rummy Pro</span><span class="bn">রামি প্রো</span></div>
-
-      <div class="game-item"><div class="emoji">♟️</div><span class="en">Chess Arena</span><span class="bn">দাবা অ্যারেনা</span></div>
-
-      <div class="game-item"><div class="emoji">🏹</div><span class="en">Archery Clash</span><span class="bn">আর্চারি ক্ল্যাশ</span></div>
-
-      <div class="game-item"><div class="emoji">🎳</div><span class="en">Carrom Pool</span><span class="bn">ক্যারম পুল</span></div>
-
-    </div>
+    <img src="assets/show3.webp" alt="show3">
 
   </div>
 
-
-
-  <div class="steps">
-
-    <h2 class="en">📲 How to Install</h2>
-
-    <h2 class="bn">📲 কিভাবে ইনস্টল করবেন</h2>
-
-    <div class="step">
-
-      <div class="num">1</div>
-
-      <div class="step-text en">Click "Download APK" button above</div>
-
-      <div class="step-text bn">উপরের "APK ডাউনলোড" বাটনে ক্লিক করুন</div>
-
-    </div>
-
-    <div class="step">
-
-      <div class="num">2</div>
-
-      <div class="step-text en">Allow "Install from Unknown Source" in settings</div>
-
-      <div class="step-text bn">সেটিংসে "অজানা উৎস থেকে ইনস্টল" অনুমতি দিন</div>
-
-    </div>
-
-    <div class="step">
-
-      <div class="num">3</div>
-
-      <div class="step-text en">Open the APK file and install</div>
-
-      <div class="step-text bn">APK ফাইলটি খুলে ইনস্টল করুন</div>
-
-    </div>
-
-  </div>
+</section>
 
 
 
-  <div class="bottom-download">
+<section class="install">
 
-    <a class="download-btn" href="https://dl.6netq7o.top/3d1jcdziiz" target="_blank" rel="noopener">
+  <h2>📱 How to Install / ইনস্টল করার ধাপ</h2>
 
-      <span class="en">⬇️ DOWNLOAD APK NOW</span>
+  <div class="step"><span>1</span><div><p class="en">Tap Download APK</p><p class="bn">ডাউনলোড বাটনে ক্লিক করুন</p></div></div>
 
-      <span class="bn">⬇️ এখনই APK ডাউনলোড করুন</span>
+  <div class="step"><span>2</span><div><p class="en">Allow "Unknown sources" in settings</p><p class="bn">সেটিংসে "অজানা উৎস" অনুমতি দিন</p></div></div>
 
-    </a>
+  <div class="step"><span>3</span><div><p class="en">Open file & install</p><p class="bn">ফাইল ওপেন করে ইনস্টল করুন</p></div></div>
 
-    <div class="mirror-links">
+  <div class="step"><span>4</span><div><p class="en">Enjoy watching 🎉</p><p class="bn">এবার উপভোগ করুন 🎉</p></div></div>
 
-      <span class="en">Mirror:</span>
-
-      <span class="bn">মিরর:</span>
-
-      <a href="https://dl.gnnjqml.top/3d1jcdziiz" target="_blank" rel="noopener">1</a>
-
-      <a href="https://dl.n0oldlpw.top/3d1jcdziiz" target="_blank" rel="noopener">2</a>
-
-      <a href="https://dl.nswjdo9.top/3d1jcdziiz" target="_blank" rel="noopener">3</a>
-
-    </div>
-
-  </div>
+</section>
 
 
 
-  <div class="disclaimer">
+<a class="sticky" id="dlSticky" href="https://kepj273g1ker.xalvioncraft.com/Upcc1RsKbcDc" download="DramaBuzz.apk">📲 Download APK</a>
 
-    <p class="en">⚠️ For entertainment purposes only. No real money gambling. 18+</p>
 
-    <p class="bn">⚠️ শুধুমাত্র বিনোদনের জন্য। কোনো বাস্তব অর্থ জুয়া নয়। ১৮+</p>
 
-  </div>
+<footer class="footer">
 
-</div>
+  © 2024 DramaBuzz | support@dramabuzz.com
+
+</footer>
 
 
 
 <script>
 
-function setLang(lang) {
+  const topBtn = document.getElementById('dlTop');
 
-  if (lang === 'bn') {
+  const stickyBtn = document.getElementById('dlSticky');
 
-    document.body.classList.add('bangla');
 
-    document.querySelectorAll('.lang-switch button')[0].classList.remove('active');
 
-    document.querySelectorAll('.lang-switch button')[1].classList.add('active');
+  // 防止重复点击
 
-  } else {
+  [topBtn, stickyBtn].forEach(btn => {
 
-    document.body.classList.remove('bangla');
+    btn.addEventListener('click', () => {
 
-    document.querySelectorAll('.lang-switch button')[0].classList.add('active');
+      btn.style.pointerEvents = 'none';
 
-    document.querySelectorAll('.lang-switch button')[1].classList.remove('active');
+      setTimeout(() => btn.style.pointerEvents = 'auto', 1500);
 
-  }
+    });
 
-}
+  });
+
+
+
+  // 滚动显示吸底按钮
+
+  window.addEventListener('scroll', () => {
+
+    if (window.scrollY > 300) stickyBtn.classList.add('show');
+
+    else stickyBtn.classList.remove('show');
+
+  });
 
 </script>
 
