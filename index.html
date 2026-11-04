@@ -1,102 +1,140 @@
 <!DOCTYPE html>
 
-<html lang="bn">
+<html lang="hi">
 
 <head>
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>DramaBuzz - Trending Drama</title>
+<title>Rangora Play — फ़िल्में · सीरीज़ · टीवी और मनोरंजन</title>
 
 <style>
 
-  :root {
+:root{--bg:#0a0a0f;--card:#15151f;--red:#e94560;--txt:#fff;--mut:#9a9a9a;--border:#222}
 
-    --bg: #0b0b12;
+*{margin:0;padding:0;box-sizing:border-box}
 
-    --card: #161622;
+body{background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Arial,sans-serif;padding-bottom:80px;line-height:1.5}
 
-    --accent: #e94560;
+a{text-decoration:none;color:inherit}
 
-    --text: #ffffff;
 
-    --sub: #aaaaaa;
 
-  }
+/* Header */
 
-  * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; }
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:50}
 
-  body { background: var(--bg); color: var(--text); line-height: 1.5; padding-bottom: 70px; }
+.brand{font-size:19px;font-weight:800;color:var(--red);letter-spacing:.5px}
 
-  
+.langs select{background:#1c1c28;color:#fff;border:1px solid var(--border);border-radius:8px;padding:7px 10px;font-size:13px}
 
-  /* Header */
 
-  header { display: flex; align-items: center; padding: 15px 20px; background: var(--bg); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #222; }
 
-  .logo-img { width: 40px; height: 40px; margin-right: 10px; border-radius: 8px; }
+/* Hero */
 
-  h1 { font-size: 24px; color: var(--accent); font-weight: 800; letter-spacing: 1px; }
+.hero{text-align:center;padding:34px 22px 24px;background:linear-gradient(180deg,#15151f,#0a0a0f)}
 
-  
+.hero h1{font-size:26px;font-weight:800;margin-bottom:10px}
 
-  /* Hero */
+.hero p{color:var(--mut);font-size:14px;margin-bottom:22px}
 
-  .hero { padding: 20px; text-align: center; }
+.dl-btn{display:inline-block;background:var(--red);color:#fff;padding:15px 38px;border-radius:40px;font-weight:700;font-size:17px;box-shadow:0 4px 20px rgba(233,69,96,.4)}
 
-  .hero-img { width: 100%; max-width: 400px; border-radius: 16px; margin: 0 auto 15px; display: block; box-shadow: 0 8px 24px rgba(233,69,96,0.15); }
+.dl-btn:active{transform:scale(.97)}
 
-  .top-btn { display: inline-block; background: var(--accent); color: #fff; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 18px; }
 
-  
 
-  /* Features */
+/* Tabs */
 
-  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 20px 20px; }
+.tabs{display:flex;gap:10px;overflow-x:auto;padding:18px 20px;scrollbar-width:none}
 
-  .item { background: var(--card); padding: 15px; border-radius: 14px; text-align: center; }
+.tabs::-webkit-scrollbar{display:none}
 
-  .item div { font-size: 28px; margin-bottom: 5px; }
+.tab{background:var(--card);padding:9px 18px;border-radius:22px;font-size:13px;white-space:nowrap;color:var(--mut);cursor:pointer;border:1px solid transparent;transition:.2s}
 
-  .en { font-weight: bold; font-size: 15px; }
+.tab.active{background:var(--red);color:#fff}
 
-  .bn { color: var(--sub); font-size: 13px; margin-top: 2px; }
+.tab .num{opacity:.7;font-size:11px;margin-left:4px}
 
-  
 
-  /* Shows */
 
-  .shows { padding: 20px; }
+/* Section */
 
-  h2 { color: var(--accent); font-size: 22px; margin-bottom: 15px; }
+.section{padding:6px 20px 22px}
 
-  .row { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 10px; }
+.sec-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:14px}
 
-  .row img { width: 140px; height: 200px; border-radius: 12px; object-fit: cover; flex-shrink: 0; background: #222; }
+.sec-head h2{font-size:19px;font-weight:700}
 
-  
+.sec-head a{font-size:13px;color:var(--red)}
 
-  /* Install Steps */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 
-  .install { padding: 20px; }
+.card{background:var(--card);border-radius:14px;overflow:hidden}
 
-  .step { display: flex; align-items: center; background: var(--card); padding: 15px; border-radius: 14px; margin-bottom: 12px; }
+.card .poster{height:160px;background:linear-gradient(135deg,#1e1e2c,#2a2a3d);display:flex;align-items:center;justify-content:center;font-size:12px;color:#555;position:relative}
 
-  .step span { background: var(--accent); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px; flex-shrink: 0; }
+.card .poster::after{content:"🎬";font-size:32px;opacity:.3;position:absolute}
 
-  
+.card .meta{padding:11px}
 
-  /* Sticky Download */
+.tag{font-size:10px;color:var(--red);font-weight:700;text-transform:uppercase;letter-spacing:.5px}
 
-  .sticky { position: fixed; bottom: 0; left: 0; right: 0; background: var(--accent); color: #fff; text-align: center; padding: 16px; font-size: 18px; font-weight: bold; text-decoration: none; z-index: 200; box-shadow: 0 -4px 15px rgba(0,0,0,0.4); transform: translateY(100%); transition: 0.3s; }
+.title{font-size:14px;margin:3px 0;font-weight:600}
 
-  .sticky.show { transform: translateY(0); }
+.sub{font-size:11px;color:var(--mut)}
 
-  
 
-  footer { text-align: center; padding: 20px; color: var(--sub); font-size: 12px; }
+
+/* Steps */
+
+.steps{padding:26px 20px}
+
+.steps h2{font-size:18px;margin-bottom:16px;color:var(--red)}
+
+.step-row{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start}
+
+.step-row b{background:var(--red);width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px}
+
+.step-row p{font-size:14px}
+
+.step-row p small{display:block;color:var(--mut);font-size:12px;margin-top:2px}
+
+
+
+/* FAQ */
+
+.faq{padding:10px 20px 26px}
+
+.faq h2{font-size:18px;margin-bottom:14px;color:var(--red)}
+
+details{background:var(--card);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+
+summary{font-size:14px;font-weight:600;cursor:pointer;list-style:none;position:relative;padding-right:20px}
+
+summary::-webkit-details-marker{display:none}
+
+summary::after{content:"+";position:absolute;right:0;color:var(--red);font-size:18px}
+
+details[open] summary::after{content:"−"}
+
+details p{font-size:13px;color:var(--mut);margin-top:10px;line-height:1.6}
+
+
+
+/* Sticky */
+
+.sticky{position:fixed;bottom:0;left:0;right:0;background:var(--red);color:#fff;text-align:center;padding:15px;font-weight:700;font-size:17px;z-index:99;box-shadow:0 -3px 14px rgba(0,0,0,.5)}
+
+
+
+/* Footer */
+
+footer{padding:24px 20px 10px;text-align:center;color:#555;font-size:12px}
+
+footer a{color:var(--mut);margin:0 8px}
 
 </style>
 
@@ -108,19 +146,27 @@
 
 <header>
 
-  <!-- 内联SVG Logo -->
+  <div class="brand">🎬 Rangora Play</div>
 
-  <svg class="logo-img" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <div class="langs">
 
-    <rect width="100" height="100" rx="16" fill="#e94560"/>
+    <select id="langSwitch">
 
-    <path d="M20 40 L80 40 L80 75 L20 75 Z" fill="none" stroke="#fff" stroke-width="6"/>
+      <option value="hi">हिन्दी</option>
 
-    <path d="M35 30 L35 40 M50 30 L50 40 M65 30 L65 40" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+      <option value="en">English</option>
 
-  </svg>
+      <option value="bn">বাংলা</option>
 
-  <h1>DramaBuzz</h1>
+      <option value="ta">தமிழ்</option>
+
+      <option value="te">తెలుగు</option>
+
+      <option value="mr">मराठी</option>
+
+    </select>
+
+  </div>
 
 </header>
 
@@ -128,147 +174,393 @@
 
 <section class="hero">
 
-  <!-- 内联SVG主图 -->
+  <h1 data-i18n="hero_title">फ़िल्में · सीरीज़ · टीवी और मनोरंजन</h1>
 
-  <svg class="hero-img" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+  <p data-i18n="hero_sub">भारत + दुनिया · 56+ चुने हुए कार्यक्रम</p>
 
-    <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#222"/><stop offset="1" stop-color="#0b0b12"/></linearGradient></defs>
-
-    <rect width="400" height="500" rx="16" fill="url(#g1)"/>
-
-    <text x="200" y="220" text-anchor="middle" font-size="32" font-weight="bold" fill="#e94560">DramaBuzz</text>
-
-    <text x="200" y="260" text-anchor="middle" font-size="18" fill="#aaa">Trending Short Dramas</text>
-
-  </svg>
-
-  <a class="top-btn" id="dlTop" href="https://kepj273g1ker.xalvioncraft.com/Upcc1RsKbcDc" download="DramaBuzz.apk">📲 Download APK</a>
+  <a class="dl-btn" href="https://kepj273g1ker.xalvioncraft.com/Upcc1RsKbcDc" download="RangoraPlay.apk">📲 डाउनलोड करें</a>
 
 </section>
 
 
 
-<section class="features">
+<div class="tabs" id="tabs">
 
-  <div class="item"><div>📥</div><p class="en">Offline download</p><p class="bn">অফলাইনে ডাউনলোড</p></div>
+  <div class="tab active" data-cat="all">सभी<span class="num">56</span></div>
 
-  <div class="item"><div>🎭</div><p class="en">Romance / Action</p><p class="bn">রোমান্স / অ্যাকশন</p></div>
+  <div class="tab" data-cat="film">फ़िल्में<span class="num">26</span></div>
 
-  <div class="item"><div>⚡</div><p class="en">Low data use</p><p class="bn">কম ডেটা খরচ</p></div>
+  <div class="tab" data-cat="series">सीरीज़<span class="num">19</span></div>
 
-  <div class="item"><div>🔥</div><p class="en">Daily Trending</p><p class="bn">প্রতিদিন ট্রেন্ডিং</p></div>
+  <div class="tab" data-cat="tv">टीवी और मनोरंजन<span class="num">9</span></div>
 
-</section>
+  <div class="tab" data-cat="cricket">क्रिकेट<span class="num">2</span></div>
+
+</div>
 
 
 
-<section class="shows">
+<section class="section">
 
-  <h2>🔥 Trending Now / ট্রেন্ডিং</h2>
+  <div class="sec-head">
 
-  <div class="row">
+    <h2 data-i18n="trend_title">भारत + दुनिया</h2>
 
-    <!-- 内联SVG剧集1 -->
-
-    <svg width="140" height="200" viewBox="0 0 140 200" xmlns="http://www.w3.org/2000/svg">
-
-      <rect width="140" height="200" rx="12" fill="#1a1a24"/>
-
-      <rect x="20" y="40" width="100" height="120" rx="8" fill="#222"/>
-
-      <text x="70" y="105" text-anchor="middle" font-size="16" fill="#e94560" font-weight="bold">SHOW 1</text>
-
-      <text x="70" y="130" text-anchor="middle" font-size="12" fill="#aaa">Romance</text>
-
-    </svg>
-
-    <!-- 内联SVG剧集2 -->
-
-    <svg width="140" height="200" viewBox="0 0 140 200" xmlns="http://www.w3.org/2000/svg">
-
-      <rect width="140" height="200" rx="12" fill="#1a1a24"/>
-
-      <rect x="20" y="40" width="100" height="120" rx="8" fill="#222"/>
-
-      <text x="70" y="105" text-anchor="middle" font-size="16" fill="#e94560" font-weight="bold">SHOW 2</text>
-
-      <text x="70" y="130" text-anchor="middle" font-size="12" fill="#aaa">Action</text>
-
-    </svg>
-
-    <!-- 内联SVG剧集3 -->
-
-    <svg width="140" height="200" viewBox="0 0 140 200" xmlns="http://www.w3.org/2000/svg">
-
-      <rect width="140" height="200" rx="12" fill="#1a1a24"/>
-
-      <rect x="20" y="40" width="100" height="120" rx="8" fill="#222"/>
-
-      <text x="70" y="105" text-anchor="middle" font-size="16" fill="#e94560" font-weight="bold">SHOW 3</text>
-
-      <text x="70" y="130" text-anchor="middle" font-size="12" fill="#aaa">Drama</text>
-
-    </svg>
+    <a href="#">और देखें →</a>
 
   </div>
 
-</section>
-
-
-
-<section class="install">
-
-  <h2>📱 How to Install / ইনস্টল করার ধাপ</h2>
-
-  <div class="step"><span>1</span><div><p class="en">Tap Download APK</p><p class="bn">ডাউনলোড বাটনে ক্লিক করুন</p></div></div>
-
-  <div class="step"><span>2</span><div><p class="en">Allow "Unknown sources"</p><p class="bn">সেটিংসে "অজানা উৎস" অনুমতি দিন</p></div></div>
-
-  <div class="step"><span>3</span><div><p class="en">Open file & install</p><p class="bn">ফাইল ওপেন করে ইনস্টল করুন</p></div></div>
-
-  <div class="step"><span>4</span><div><p class="en">Enjoy watching 🎉</p><p class="bn">এবার উপভোগ করুন 🎉</p></div></div>
+  <div class="grid" id="grid"></div>
 
 </section>
 
 
 
-<a class="sticky" id="dlSticky" href="https://kepj273g1ker.xalvioncraft.com/Upcc1RsKbcDc" download="DramaBuzz.apk">📲 Download APK</a>
+<section class="steps">
+
+  <h2 data-i18n="step_title">मुफ़्त ऐप · फ़ुर्सत के पल</h2>
+
+  <div class="step-row"><b>1</b><div><p data-i18n="s1t">डाउनलोड करें</p><small data-i18n="s1d">डाउनलोड बटन से ऐप प्राप्त करें</small></div></div>
+
+  <div class="step-row"><b>2</b><div><p data-i18n="s2t">इंस्टॉल करें</p><small data-i18n="s2d">फ़ाइल खोलें और निर्देश पालन करें</small></div></div>
+
+  <div class="step-row"><b>3</b><div><p data-i18n="s3t">देखना शुरू करें</p><small data-i18n="s3d">ऐप खोलें और कार्यक्रम देखें</small></div></div>
+
+</section>
 
 
 
-<footer>© 2024 DramaBuzz | support@dramabuzz.com</footer>
+<section class="faq">
+
+  <h2 data-i18n="faq_title">कुछ सवाल</h2>
+
+  <details>
+
+    <summary data-i18n="q1">यह पेज क्या दिखाता है?</summary>
+
+    <p data-i18n="a1">भारत और दुनिया की चुनिंदा फ़िल्में, सीरीज़, टीवी कार्यक्रम और क्रिकेट की जानकारी।</p>
+
+  </details>
+
+  <details>
+
+    <summary data-i18n="q2">कौन-कौन सी भाषाएँ उपलब्ध हैं?</summary>
+
+    <p data-i18n="a2">हिन्दी, English, தமிழ், తెలుగు, বাংলা और मराठी में उपलब्ध।</p>
+
+  </details>
+
+  <details>
+
+    <summary data-i18n="q3">ऐप कैसे इंस्टॉल करें?</summary>
+
+    <p data-i18n="a3">डाउनलोड करें पर टैप करें, फ़ाइल खोलें और Android इंस्टॉलेशन निर्देश पालन करें।</p>
+
+  </details>
+
+</section>
+
+
+
+<a class="sticky" href="https://kepj273g1ker.xalvioncraft.com/Upcc1RsKbcDc" download="RangoraPlay.apk">📲 डाउनलोड करें</a>
+
+
+
+<footer>
+
+  © 2026 Rangora Play · भारत<br>
+
+  <a href="#">गोपनीयता</a>·<a href="#">शर्तें</a>·<a href="#">↑ ऊपर जाएँ</a>
+
+</footer>
 
 
 
 <script>
 
-  const topBtn = document.getElementById('dlTop');
+// ===== 多语言字典 =====
 
-  const stickyBtn = document.getElementById('dlSticky');
+const i18n = {
+
+  hi:{
+
+    hero_title:"फ़िल्में · सीरीज़ · टीवी और मनोरंजन",
+
+    hero_sub:"भारत + दुनिया · 56+ चुने हुए कार्यक्रम",
+
+    trend_title:"भारत + दुनिया",
+
+    step_title:"मुफ़्त ऐप · फ़ुर्सत के पल",
+
+    s1t:"डाउनलोड करें",s1d:"डाउनलोड बटन से ऐप प्राप्त करें",
+
+    s2t:"इंस्टॉल करें",s2d:"फ़ाइल खोलें और निर्देश पालन करें",
+
+    s3t:"देखना शुरू करें",s3d:"ऐप खोलें और कार्यक्रम देखें",
+
+    faq_title:"कुछ सवाल",
+
+    q1:"यह पेज क्या दिखाता है?",a1:"भारत और दुनिया की चुनिंदा फ़िल्में, सीरीज़, टीवी कार्यक्रम और क्रिकेट की जानकारी।",
+
+    q2:"कौन-कौन सी भाषाएँ उपलब्ध हैं?",a2:"हिन्दी, English, தமிழ், తెలుగు, বাংলা और मराठी में उपलब्ध।",
+
+    q3:"ऐप कैसे इंस्टॉल करें?",a3:"डाउनलोड करें पर टैप करें, फ़ाइल खोलें और Android इंस्टॉलेशन निर्देश पालन करें।"
+
+  },
+
+  en:{
+
+    hero_title:"Films · Series · TV & Entertainment",
+
+    hero_sub:"India + world · 56+ curated shows",
+
+    trend_title:"India + World",
+
+    step_title:"Free app · your free time",
+
+    s1t:"Download",s1d:"Get the app via download button",
+
+    s2t:"Install",s2d:"Open file and follow instructions",
+
+    s3t:"Start watching",s3d:"Open app and browse shows",
+
+    faq_title:"Questions",
+
+    q1:"What does this page show?",a1:"Curated films, series, TV shows and cricket from India and the world.",
+
+    q2:"Which languages are available?",a2:"Hindi, English, Tamil, Telugu, Bengali and Marathi.",
+
+    q3:"How to install the app?",a3:"Tap Download, open the file and follow Android installation steps."
+
+  },
+
+  bn:{
+
+    hero_title:"সিনেমা · সিরিজ · টিভি এবং মনোরঞ্জন",
+
+    hero_sub:"ভারত + বিশ্ব · 56+ নির্বাচিত শো",
+
+    trend_title:"ভারত + বিশ্ব",
+
+    step_title:"ফ্রি অ্যাপ · আপনার অবসর",
+
+    s1t:"ডাউনলোড করুন",s1d:"ডাউনলোড বাটন দিয়ে অ্যাপ নিন",
+
+    s2t:"ইনস্টল করুন",s2d:"ফাইল খুলুন ও নির্দেশ পালন করুন",
+
+    s3t:"দেখা শুরু করুন",s3d:"অ্যাপ খুলুন ও শো দেখুন",
+
+    faq_title:"কিছু প্রশ্ন",
+
+    q1:"এই পেজে কী দেখানো হয়েছে?",a1:"ভারত ও বিশ্বের নির্বাচিত সিনেমা, সিরিজ, টিভি শো ও ক্রিকেট।",
+
+    q2:"কোন কোন ভাষা উপলব্ধ?",a2:"হিন্দি, English, தமிழ், తెలుగు, বাংলা ও मराठी।",
+
+    q3:"অ্যাপ ইনস্টল কীভাবে করবেন?",a3:"ডাউনলোডে ট্যাপ করুন, ফাইল খুলুন ও Android নির্দেশ পালন করুন।"
+
+  },
+
+  ta:{
+
+    hero_title:"திரைப்படங்கள் · தொடர்கள் · டிவி மற்றும் பொழுதுபோக்கு",
+
+    hero_sub:"இந்தியா + உலகம் · 56+ தேர்ந்தெடுக்கப்பட்ட நிகழ்ச்சிகள்",
+
+    trend_title:"இந்தியா + உலகம்",
+
+    step_title:"இலவச செயலி · உங்கள் நேரம்",
+
+    s1t:"பதிவிறக்கம்",s1d:"பதிவிறக்க பொத்தான் மூலம் பெறவும்",
+
+    s2t:"நிறுவு",s2d:"கோப்பைத் திறந்து வழிமுறைகளைப் பின்பற்றவும்",
+
+    s3t:"பார்க்கத் தொடங்கு",s3d:"செயலியைத் திறந்து நிகழ்ச்சிகளைப் பார்க்கவும்",
+
+    faq_title:"சில கேள்விகள்",
+
+    q1:"இந்தப் பக்கம் என்ன காட்டுகிறது?",a1:"இந்தியா மற்றும் உலகின் தேர்ந்தெடுக்கப்பட்ட திரைப்படங்கள், தொடர்கள், டிவி நிகழ்ச்சிகள் மற்றும் கிரிக்கெட்.",
+
+    q2:"எந்த மொழிகள் கிடைக்கின்றன?",a2:"ஹிந்தி, English, தமிழ், తెలుగు, বাংলা மற்றும் मराठी.",
+
+    q3:"செயலியை எப்படி நிறுவுவது?",a3:"பதிவிறக்கத்தைத் தட்டவும், கோப்பைத் திறந்து Android வழிமுறைகளைப் பின்பற்றவும்."
+
+  },
+
+  te:{
+
+    hero_title:"సినిమాలు · సిరీస్‌లు · టీవీ మరియు ఎంటర్‌టైన్‌మెంట్",
+
+    hero_sub:"భారత్ + ప్రపంచం · 56+ ఎంచుకున్న షోలు",
+
+    trend_title:"భారత్ + ప్రపంచం",
+
+    step_title:"ఉచిత యాప్ · మీ సమయం",
+
+    s1t:"డౌన్‌లోడ్",s1d:"డౌన్‌లోడ్ బటన్ ద్వారా యాప్ పొందండి",
+
+    s2t:"ఇన్‌స్టాల్ చేయండి",s2d:"ఫైల్ తెరిచి సూచనలు పాటించండి",
+
+    s3t:"చూడటం ప్రారంభించండి",s3d:"యాప్ తెరిచి షోలు చూడండి",
+
+    faq_title:"కొన్ని ప్రశ్నలు",
+
+    q1:"ఈ పేజీలో ఏమి చూపబడింది?",a1:"భారత్ మరియు ప్రపంచం నుండి ఎంచుకున్న సినిమాలు, సిరీస్‌లు, టీవీ షోలు మరియు క్రికెట్.",
+
+    q2:"ఏ భాషలు అందుబాటులో ఉన్నాయి?",a2:"హిందీ, English, தமிழ், తెలుగు, বাংলা మరియు मराठी.",
+
+    q3:"యాప్‌ని ఎలా ఇన్‌స్టాల్ చేయాలి?",a3:"డౌన్‌లోడ్‌ని నొక్కండి, ఫైల్ తెరిచి Android సూచనలు పాటించండి."
+
+  },
+
+  mr:{
+
+    hero_title:"चित्रपट · मालिका · टीव्ही आणि मनोरंजन",
+
+    hero_sub:"भारत + जग · 56+ निवडक शो",
+
+    trend_title:"भारत + जग",
+
+    step_title:"मोफत अॅप · तुझा वेळ",
+
+    s1t:"डाउनलोड करा",s1d:"डाउनलोड बटणावरून अॅप मिळवा",
+
+    s2t:"इंस्टॉल करा",s2d:"फाइल उघडा आणि सूचना पाळा",
+
+    s3t:"पाहायला सुरुवात करा",s3d:"अॅप उघडा आणि शो पहा",
+
+    faq_title:"काही प्रश्न",
+
+    q1:"हे पृष्ठ काय दाखवते?",a1:"भारत आणि जगातील निवडक चित्रपट, मालिका, टीव्ही शो आणि क्रिकेट.",
+
+    q2:"कोणत्या भाषा उपलब्ध आहेत?",a2:"हिंदी, English, தமிழ், తెలుగు, বাংলা आणि मराठी.",
+
+    q3:"अॅप कसे इंस्टॉल करावे?",a3:"डाउनलोडवर टॅप करा, फाइल उघडा आणि Android सूचना पाळा."
+
+  }
+
+};
 
 
 
-  [topBtn, stickyBtn].forEach(btn => {
+// ===== 内容数据 =====
 
-    btn.addEventListener('click', () => {
+const shows = [
 
-      btn.style.pointerEvents = 'none';
+  {t:"Gajab Raat",cat:"film",lang:"Hindi",origin:"भारतीय"},
 
-      setTimeout(() => btn.style.pointerEvents = 'auto', 1500);
+  {t:"East of Eden",cat:"series",lang:"English",origin:"अंतरराष्ट्रीय"},
 
-    });
+  {t:"Romãnchakam",cat:"film",lang:"Telugu",origin:"भारतीय"},
+
+  {t:"Musafir Cafe",cat:"series",lang:"Hindi",origin:"भारतीय"},
+
+  {t:"Crew Girl",cat:"series",lang:"English",origin:"अंतरराष्ट्रीय"},
+
+  {t:"The Great Indian Kapil Show",cat:"tv",lang:"Hindi",origin:"भारतीय"},
+
+  {t:"Roadies Rebirth",cat:"tv",lang:"Hindi",origin:"भारतीय"},
+
+  {t:"Indian Idol - Legends Return",cat:"tv",lang:"Hindi",origin:"भारतीय"},
+
+  {t:"Kaun Banega Crorepati",cat:"tv",lang:"Hindi",origin:"भारतीय"},
+
+  {t:"India's Best Dancer",cat:"tv",lang:"Hindi",origin:"भारतीय"},
+
+  {t:"UNABOMBER",cat:"series",lang:"English",origin:"अंतरराष्ट्रीय"},
+
+  {t:"Ohh My Dog",cat:"film",lang:"Hindi",origin:"भारतीय"},
+
+  {t:"Lust Stories 3",cat:"film",lang:"Hindi",origin:"भारतीय"},
+
+  {t:"Dhamaal 4",cat:"film",lang:"Hindi",origin:"भारतीय"},
+
+  {t:"Best of the Best",cat:"film",lang:"English",origin:"अंतरराष्ट्रीय"},
+
+  {t:"The Disciple",cat:"film",lang:"English",origin:"अंतरराष्ट्रीय"},
+
+  {t:"Tamil Idol",cat:"tv",lang:"Tamil",origin:"भारतीय"},
+
+  {t:"India: NZ tour",cat:"cricket",lang:"English",origin:"क्रिकेट"},
+
+  {t:"India Women: ZIM series",cat:"cricket",lang:"English",origin:"क्रिकेट"}
+
+];
+
+
+
+// ===== 渲染卡片 =====
+
+function render(cat){
+
+  const grid=document.getElementById('grid');
+
+  const list=cat==='all'?shows:shows.filter(s=>s.cat===cat);
+
+  grid.innerHTML=list.map(s=>`
+
+    <div class="card">
+
+      <div class="poster"></div>
+
+      <div class="meta">
+
+        <div class="tag">${s.lang} · ${s.origin}</div>
+
+        <div class="title">${s.t}</div>
+
+        <div class="sub">${s.cat==='film'?'फ़िल्म':s.cat==='series'?'सीरीज़':s.cat==='tv'?'टीवी':'क्रिकेट'}</div>
+
+      </div>
+
+    </div>`).join('');
+
+}
+
+
+
+// ===== 分类切换 =====
+
+document.querySelectorAll('.tab').forEach(tab=>{
+
+  tab.addEventListener('click',()=>{
+
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+
+    tab.classList.add('active');
+
+    render(tab.dataset.cat);
 
   });
 
+});
 
 
-  window.addEventListener('scroll', () => {
 
-    if (window.scrollY > 300) stickyBtn.classList.add('show');
+// ===== 多语言切换 =====
 
-    else stickyBtn.classList.remove('show');
+const sw=document.getElementById('langSwitch');
+
+function applyLang(l){
+
+  document.documentElement.lang=l;
+
+  localStorage.setItem('rangora_lang',l);
+
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+
+    const k=el.getAttribute('data-i18n');
+
+    if(i18n[l]&&i18n[l][k]) el.textContent=i18n[l][k];
 
   });
+
+}
+
+sw.addEventListener('change',e=>applyLang(e.target.value));
+
+render('all');
+
+applyLang(localStorage.getItem('rangora_lang')||'hi');
 
 </script>
 
