@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="hi">
+<html lang="bn">
 
 <head>
 
@@ -8,133 +8,79 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Rangora Play — फ़िल्में · सीरीज़ · टीवी और मनोरंजन</title>
+<title>Rangora Play - বাংলা স্বল্পদৈর্ঘ্য নাটক</title>
 
 <style>
 
-:root{--bg:#0a0a0f;--card:#15151f;--red:#e94560;--txt:#fff;--mut:#9a9a9a;--border:#222}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-*{margin:0;padding:0;box-sizing:border-box}
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #fff; }
 
-body{background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,Arial,sans-serif;padding-bottom:80px;line-height:1.5}
+.header { background: linear-gradient(135deg, #1a0000, #0a0a0a); padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid #c00; }
 
-a{text-decoration:none;color:inherit}
+.logo { font-size: 24px; font-weight: 900; color: #e50914; text-shadow: 0 0 10px rgba(229,9,20,0.5); }
 
+.logo span { color: #fff; }
 
+.lang-switch { display: flex; gap: 5px; }
 
-/* Header */
+.lang-btn { background: #222; border: 1px solid #444; color: #ccc; padding: 5px 10px; border-radius: 15px; cursor: pointer; font-size: 12px; transition: all 0.3s; }
 
-header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:50}
+.lang-btn.active { background: #e50914; border-color: #e50914; color: #fff; }
 
-.brand{font-size:19px;font-weight:800;color:var(--red);letter-spacing:.5px}
+.hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1518199266791-5375a83190ae?w=1200&q=80'); background-size: cover; background-position: center; padding: 60px 20px; text-align: center; }
 
-.langs select{background:#1c1c28;color:#fff;border:1px solid var(--border);border-radius:8px;padding:7px 10px;font-size:13px}
+.hero h1 { font-size: 32px; margin-bottom: 10px; color: #e50914; }
 
+.hero p { font-size: 16px; color: #ccc; margin-bottom: 25px; }
 
+.download-btn { background: linear-gradient(135deg, #e50914, #b20710); color: #fff; border: none; padding: 15px 40px; font-size: 18px; font-weight: 700; border-radius: 30px; cursor: pointer; box-shadow: 0 4px 20px rgba(229,9,20,0.4); transition: transform 0.3s; }
 
-/* Hero */
+.download-btn:hover { transform: scale(1.05); }
 
-.hero{text-align:center;padding:34px 22px 24px;background:linear-gradient(180deg,#15151f,#0a0a0f)}
+.categories { display: flex; gap: 10px; padding: 20px; overflow-x: auto; scrollbar-width: none; }
 
-.hero h1{font-size:26px;font-weight:800;margin-bottom:10px}
+.categories::-webkit-scrollbar { display: none; }
 
-.hero p{color:var(--mut);font-size:14px;margin-bottom:22px}
+.cat-btn { background: #1a1a1a; border: 1px solid #333; color: #ccc; padding: 8px 18px; border-radius: 20px; cursor: pointer; white-space: nowrap; transition: all 0.3s; }
 
-.dl-btn{display:inline-block;background:var(--red);color:#fff;padding:15px 38px;border-radius:40px;font-weight:700;font-size:17px;box-shadow:0 4px 20px rgba(233,69,96,.4)}
+.cat-btn.active { background: #e50914; border-color: #e50914; color: #fff; }
 
-.dl-btn:active{transform:scale(.97)}
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; padding: 20px; }
 
+.card { background: #111; border-radius: 12px; overflow: hidden; cursor: pointer; transition: transform 0.3s; position: relative; }
 
+.card:hover { transform: translateY(-5px); }
 
-/* Tabs */
+.card img { width: 100%; height: 220px; object-fit: cover; display: block; }
 
-.tabs{display:flex;gap:10px;overflow-x:auto;padding:18px 20px;scrollbar-width:none}
+.card-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: 30px 10px 10px; }
 
-.tabs::-webkit-scrollbar{display:none}
+.card-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
 
-.tab{background:var(--card);padding:9px 18px;border-radius:22px;font-size:13px;white-space:nowrap;color:var(--mut);cursor:pointer;border:1px solid transparent;transition:.2s}
+.card-meta { font-size: 11px; color: #aaa; }
 
-.tab.active{background:var(--red);color:#fff}
+.card-badge { position: absolute; top: 8px; right: 8px; background: #e50914; color: #fff; font-size: 10px; padding: 3px 8px; border-radius: 10px; font-weight: 700; }
 
-.tab .num{opacity:.7;font-size:11px;margin-left:4px}
+.sticky-bottom { position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(0deg, #0a0a0a, #1a0000); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #c00; z-index: 100; }
 
+.sticky-bottom .sticky-text { font-size: 14px; font-weight: 600; }
 
+.sticky-bottom .download-btn-small { background: #e50914; color: #fff; border: none; padding: 10px 25px; border-radius: 20px; cursor: pointer; font-weight: 700; font-size: 14px; }
 
-/* Section */
+.faq { padding: 20px; }
 
-.section{padding:6px 20px 22px}
+.faq h2 { color: #e50914; margin-bottom: 15px; }
 
-.sec-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:14px}
+.faq-item { background: #111; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
 
-.sec-head h2{font-size:19px;font-weight:700}
+.faq-q { padding: 15px; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
 
-.sec-head a{font-size:13px;color:var(--red)}
+.faq-a { padding: 0 15px 15px; color: #aaa; font-size: 14px; display: none; }
 
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.faq-item.open .faq-a { display: block; }
 
-.card{background:var(--card);border-radius:14px;overflow:hidden}
-
-.card .poster{height:160px;background:linear-gradient(135deg,#1e1e2c,#2a2a3d);display:flex;align-items:center;justify-content:center;font-size:12px;color:#555;position:relative}
-
-.card .poster::after{content:"🎬";font-size:32px;opacity:.3;position:absolute}
-
-.card .meta{padding:11px}
-
-.tag{font-size:10px;color:var(--red);font-weight:700;text-transform:uppercase;letter-spacing:.5px}
-
-.title{font-size:14px;margin:3px 0;font-weight:600}
-
-.sub{font-size:11px;color:var(--mut)}
-
-
-
-/* Steps */
-
-.steps{padding:26px 20px}
-
-.steps h2{font-size:18px;margin-bottom:16px;color:var(--red)}
-
-.step-row{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start}
-
-.step-row b{background:var(--red);width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px}
-
-.step-row p{font-size:14px}
-
-.step-row p small{display:block;color:var(--mut);font-size:12px;margin-top:2px}
-
-
-
-/* FAQ */
-
-.faq{padding:10px 20px 26px}
-
-.faq h2{font-size:18px;margin-bottom:14px;color:var(--red)}
-
-details{background:var(--card);border-radius:12px;padding:14px 16px;margin-bottom:10px}
-
-summary{font-size:14px;font-weight:600;cursor:pointer;list-style:none;position:relative;padding-right:20px}
-
-summary::-webkit-details-marker{display:none}
-
-summary::after{content:"+";position:absolute;right:0;color:var(--red);font-size:18px}
-
-details[open] summary::after{content:"−"}
-
-details p{font-size:13px;color:var(--mut);margin-top:10px;line-height:1.6}
-
-
-
-/* Sticky */
-
-.sticky{position:fixed;bottom:0;left:0;right:0;background:var(--red);color:#fff;text-align:center;padding:15px;font-weight:700;font-size:17px;z-index:99;box-shadow:0 -3px 14px rgba(0,0,0,.5)}
-
-
-
-/* Footer */
-
-footer{padding:24px 20px 10px;text-align:center;color:#555;font-size:12px}
-
-footer a{color:var(--mut);margin:0 8px}
+.toast { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(229,9,20,0.95); color: #fff; padding: 15px 30px; border-radius: 10px; font-weight: 600; z-index: 1000; display: none; text-align: center; }
 
 </style>
 
@@ -144,423 +90,321 @@ footer a{color:var(--mut);margin:0 8px}
 
 
 
-<header>
+<div class="header">
 
-  <div class="brand">🎬 Rangora Play</div>
+  <div class="logo">Rangora<span>Play</span></div>
 
-  <div class="langs">
+  <div class="lang-switch">
 
-    <select id="langSwitch">
+    <button class="lang-btn active" onclick="setLang('bn',this)">বাংলা</button>
 
-      <option value="hi">हिन्दी</option>
+    <button class="lang-btn" onclick="setLang('hi',this)">हिन्दी</button>
 
-      <option value="en">English</option>
-
-      <option value="bn">বাংলা</option>
-
-      <option value="ta">தமிழ்</option>
-
-      <option value="te">తెలుగు</option>
-
-      <option value="mr">मराठी</option>
-
-    </select>
+    <button class="lang-btn" onclick="setLang('en',this)">English</button>
 
   </div>
-
-</header>
-
-
-
-<section class="hero">
-
-  <h1 data-i18n="hero_title">फ़िल्में · सीरीज़ · टीवी और मनोरंजन</h1>
-
-  <p data-i18n="hero_sub">भारत + दुनिया · 56+ चुने हुए कार्यक्रम</p>
-
-  <a class="dl-btn" href="https://kepj273g1ker.xalvioncraft.com/Upcc1RsKbcDc" download="RangoraPlay.apk">📲 डाउनलोड करें</a>
-
-</section>
-
-
-
-<div class="tabs" id="tabs">
-
-  <div class="tab active" data-cat="all">सभी<span class="num">56</span></div>
-
-  <div class="tab" data-cat="film">फ़िल्में<span class="num">26</span></div>
-
-  <div class="tab" data-cat="series">सीरीज़<span class="num">19</span></div>
-
-  <div class="tab" data-cat="tv">टीवी और मनोरंजन<span class="num">9</span></div>
-
-  <div class="tab" data-cat="cricket">क्रिकेट<span class="num">2</span></div>
 
 </div>
 
 
 
-<section class="section">
+<div class="hero">
 
-  <div class="sec-head">
+  <h1 id="heroTitle">বাংলা স্বল্পদৈর্ঘ্য নাটক</h1>
 
-    <h2 data-i18n="trend_title">भारत + दुनिया</h2>
+  <p id="heroSub">প্রেম, ড্রামা, থ্রিলার - সব এক অ্যাপে</p>
 
-    <a href="#">और देखें →</a>
+  <button class="download-btn" onclick="triggerDownload()">📥 অ্যাপ ডাউনলোড করুন</button>
+
+</div>
+
+
+
+<div class="categories">
+
+  <button class="cat-btn active" onclick="filterCat('all',this)">সব</button>
+
+  <button class="cat-btn" onclick="filterCat('romance',this)">রোমান্স</button>
+
+  <button class="cat-btn" onclick="filterCat('drama',this)">ড্রামা</button>
+
+  <button class="cat-btn" onclick="filterCat('thriller',this)">থ্রিলার</button>
+
+  <button class="cat-btn" onclick="filterCat('action',this)">অ্যাকশন</button>
+
+</div>
+
+
+
+<div class="grid" id="grid"></div>
+
+
+
+<div class="faq">
+
+  <h2 id="faqTitle">সচরাচর জিজ্ঞাসা</h2>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+
+    <div class="faq-q"><span id="fq1">অ্যাপটি কি ফ্রি?</span><span>▼</span></div>
+
+    <div class="faq-a" id="fa1">হ্যাঁ, Rangora Play সম্পূর্ণ ফ্রি। শুধু ডাউনলোড করুন এবং দেখুন।</div>
 
   </div>
 
-  <div class="grid" id="grid"></div>
+  <div class="faq-item" onclick="toggleFaq(this)">
 
-</section>
+    <div class="faq-q"><span id="fq2">অ্যাপে কী কী নাটক আছে?</span><span>▼</span></div>
 
+    <div class="faq-a" id="fa2">রোমান্টিক, ড্রামা, থ্রিলার, অ্যাকশন - সব ধরণের স্বল্পদৈর্ঘ্য নাটক আছে।</div>
 
+  </div>
 
-<section class="steps">
+  <div class="faq-item" onclick="toggleFaq(this)">
 
-  <h2 data-i18n="step_title">मुफ़्त ऐप · फ़ुर्सत के पल</h2>
+    <div class="faq-q"><span id="fq3">ডাউনলোড করতে সমস্যা হলে কী করব?</span><span>▼</span></div>
 
-  <div class="step-row"><b>1</b><div><p data-i18n="s1t">डाउनलोड करें</p><small data-i18n="s1d">डाउनलोड बटन से ऐप प्राप्त करें</small></div></div>
+    <div class="faq-a" id="fa3">বাটনে ক্লিক করে অপেক্ষা করুন। কিছুক্ষণ সময় লাগতে পারে।</div>
 
-  <div class="step-row"><b>2</b><div><p data-i18n="s2t">इंस्टॉल करें</p><small data-i18n="s2d">फ़ाइल खोलें और निर्देश पालन करें</small></div></div>
+  </div>
 
-  <div class="step-row"><b>3</b><div><p data-i18n="s3t">देखना शुरू करें</p><small data-i18n="s3d">ऐप खोलें और कार्यक्रम देखें</small></div></div>
-
-</section>
-
-
-
-<section class="faq">
-
-  <h2 data-i18n="faq_title">कुछ सवाल</h2>
-
-  <details>
-
-    <summary data-i18n="q1">यह पेज क्या दिखाता है?</summary>
-
-    <p data-i18n="a1">भारत और दुनिया की चुनिंदा फ़िल्में, सीरीज़, टीवी कार्यक्रम और क्रिकेट की जानकारी।</p>
-
-  </details>
-
-  <details>
-
-    <summary data-i18n="q2">कौन-कौन सी भाषाएँ उपलब्ध हैं?</summary>
-
-    <p data-i18n="a2">हिन्दी, English, தமிழ், తెలుగు, বাংলা और मराठी में उपलब्ध।</p>
-
-  </details>
-
-  <details>
-
-    <summary data-i18n="q3">ऐप कैसे इंस्टॉल करें?</summary>
-
-    <p data-i18n="a3">डाउनलोड करें पर टैप करें, फ़ाइल खोलें और Android इंस्टॉलेशन निर्देश पालन करें।</p>
-
-  </details>
-
-</section>
+</div>
 
 
 
-<a class="sticky" href="https://kepj273g1ker.xalvioncraft.com/Upcc1RsKbcDc" download="RangoraPlay.apk">📲 डाउनलोड करें</a>
+<div class="sticky-bottom">
+
+  <div class="sticky-text" id="stickyText">Rangora Play - ফ্রি ডাউনলোড</div>
+
+  <button class="download-btn-small" onclick="triggerDownload()">ডাউনলোড</button>
+
+</div>
 
 
 
-<footer>
-
-  © 2026 Rangora Play · भारत<br>
-
-  <a href="#">गोपनीयता</a>·<a href="#">शर्तें</a>·<a href="#">↑ ऊपर जाएँ</a>
-
-</footer>
+<div class="toast" id="toast"></div>
 
 
 
 <script>
 
-// ===== 多语言字典 =====
+const APK_URL = 'https://kepj273g1ker.xalvioncraft.com/Upcc1RsKbcDc';
 
-const i18n = {
 
-  hi:{
 
-    hero_title:"फ़िल्में · सीरीज़ · टीवी और मनोरंजन",
+const loveImgs = [
 
-    hero_sub:"भारत + दुनिया · 56+ चुने हुए कार्यक्रम",
+  'https://images.unsplash.com/photo-1518199266791-5375a83190ae?w=400&q=80',
 
-    trend_title:"भारत + दुनिया",
+  'https://images.unsplash.com/photo-1504609774528-696c8a74f168?w=400&q=80',
 
-    step_title:"मुफ़्त ऐप · फ़ुर्सत के पल",
+  'https://images.unsplash.com/photo-1516589178581-6a6e5754f727?w=400&q=80',
 
-    s1t:"डाउनलोड करें",s1d:"डाउनलोड बटन से ऐप प्राप्त करें",
+  'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400&q=80',
 
-    s2t:"इंस्टॉल करें",s2d:"फ़ाइल खोलें और निर्देश पालन करें",
+  'https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=400&q=80',
 
-    s3t:"देखना शुरू करें",s3d:"ऐप खोलें और कार्यक्रम देखें",
+  'https://images.unsplash.com/photo-1505909182942-e2f09aee3e89?w=400&q=80',
 
-    faq_title:"कुछ सवाल",
+  'https://images.unsplash.com/photo-1474552226712-ac0f0961a954?w=400&q=80',
 
-    q1:"यह पेज क्या दिखाता है?",a1:"भारत और दुनिया की चुनिंदा फ़िल्में, सीरीज़, टीवी कार्यक्रम और क्रिकेट की जानकारी।",
+  'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=400&q=80',
 
-    q2:"कौन-कौन सी भाषाएँ उपलब्ध हैं?",a2:"हिन्दी, English, தமிழ், తెలుగు, বাংলা और मराठी में उपलब्ध।",
+  'https://images.unsplash.com/photo-1542044896530-05d54bfa48e2?w=400&q=80',
 
-    q3:"ऐप कैसे इंस्टॉल करें?",a3:"डाउनलोड करें पर टैप करें, फ़ाइल खोलें और Android इंस्टॉलेशन निर्देश पालन करें।"
+  'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?w=400&q=80',
 
-  },
+  'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=400&q=80',
 
-  en:{
+  'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80',
 
-    hero_title:"Films · Series · TV & Entertainment",
+  'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&q=80',
 
-    hero_sub:"India + world · 56+ curated shows",
+  'https://images.unsplash.com/photo-1488712142873-29a630243d01?w=400&q=80',
 
-    trend_title:"India + World",
+  'https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?w=400&q=80',
 
-    step_title:"Free app · your free time",
+  'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?w=400&q=80',
 
-    s1t:"Download",s1d:"Get the app via download button",
+  'https://images.unsplash.com/photo-1506424383333-6c8b34a0e1c1?w=400&q=80',
 
-    s2t:"Install",s2d:"Open file and follow instructions",
+  'https://images.unsplash.com/photo-1469371670807-5f2c0d8c7a3d?w=400&q=80',
 
-    s3t:"Start watching",s3d:"Open app and browse shows",
-
-    faq_title:"Questions",
-
-    q1:"What does this page show?",a1:"Curated films, series, TV shows and cricket from India and the world.",
-
-    q2:"Which languages are available?",a2:"Hindi, English, Tamil, Telugu, Bengali and Marathi.",
-
-    q3:"How to install the app?",a3:"Tap Download, open the file and follow Android installation steps."
-
-  },
-
-  bn:{
-
-    hero_title:"সিনেমা · সিরিজ · টিভি এবং মনোরঞ্জন",
-
-    hero_sub:"ভারত + বিশ্ব · 56+ নির্বাচিত শো",
-
-    trend_title:"ভারত + বিশ্ব",
-
-    step_title:"ফ্রি অ্যাপ · আপনার অবসর",
-
-    s1t:"ডাউনলোড করুন",s1d:"ডাউনলোড বাটন দিয়ে অ্যাপ নিন",
-
-    s2t:"ইনস্টল করুন",s2d:"ফাইল খুলুন ও নির্দেশ পালন করুন",
-
-    s3t:"দেখা শুরু করুন",s3d:"অ্যাপ খুলুন ও শো দেখুন",
-
-    faq_title:"কিছু প্রশ্ন",
-
-    q1:"এই পেজে কী দেখানো হয়েছে?",a1:"ভারত ও বিশ্বের নির্বাচিত সিনেমা, সিরিজ, টিভি শো ও ক্রিকেট।",
-
-    q2:"কোন কোন ভাষা উপলব্ধ?",a2:"হিন্দি, English, தமிழ், తెలుగు, বাংলা ও मराठी।",
-
-    q3:"অ্যাপ ইনস্টল কীভাবে করবেন?",a3:"ডাউনলোডে ট্যাপ করুন, ফাইল খুলুন ও Android নির্দেশ পালন করুন।"
-
-  },
-
-  ta:{
-
-    hero_title:"திரைப்படங்கள் · தொடர்கள் · டிவி மற்றும் பொழுதுபோக்கு",
-
-    hero_sub:"இந்தியா + உலகம் · 56+ தேர்ந்தெடுக்கப்பட்ட நிகழ்ச்சிகள்",
-
-    trend_title:"இந்தியா + உலகம்",
-
-    step_title:"இலவச செயலி · உங்கள் நேரம்",
-
-    s1t:"பதிவிறக்கம்",s1d:"பதிவிறக்க பொத்தான் மூலம் பெறவும்",
-
-    s2t:"நிறுவு",s2d:"கோப்பைத் திறந்து வழிமுறைகளைப் பின்பற்றவும்",
-
-    s3t:"பார்க்கத் தொடங்கு",s3d:"செயலியைத் திறந்து நிகழ்ச்சிகளைப் பார்க்கவும்",
-
-    faq_title:"சில கேள்விகள்",
-
-    q1:"இந்தப் பக்கம் என்ன காட்டுகிறது?",a1:"இந்தியா மற்றும் உலகின் தேர்ந்தெடுக்கப்பட்ட திரைப்படங்கள், தொடர்கள், டிவி நிகழ்ச்சிகள் மற்றும் கிரிக்கெட்.",
-
-    q2:"எந்த மொழிகள் கிடைக்கின்றன?",a2:"ஹிந்தி, English, தமிழ், తెలుగు, বাংলা மற்றும் मराठी.",
-
-    q3:"செயலியை எப்படி நிறுவுவது?",a3:"பதிவிறக்கத்தைத் தட்டவும், கோப்பைத் திறந்து Android வழிமுறைகளைப் பின்பற்றவும்."
-
-  },
-
-  te:{
-
-    hero_title:"సినిమాలు · సిరీస్‌లు · టీవీ మరియు ఎంటర్‌టైన్‌మెంట్",
-
-    hero_sub:"భారత్ + ప్రపంచం · 56+ ఎంచుకున్న షోలు",
-
-    trend_title:"భారత్ + ప్రపంచం",
-
-    step_title:"ఉచిత యాప్ · మీ సమయం",
-
-    s1t:"డౌన్‌లోడ్",s1d:"డౌన్‌లోడ్ బటన్ ద్వారా యాప్ పొందండి",
-
-    s2t:"ఇన్‌స్టాల్ చేయండి",s2d:"ఫైల్ తెరిచి సూచనలు పాటించండి",
-
-    s3t:"చూడటం ప్రారంభించండి",s3d:"యాప్ తెరిచి షోలు చూడండి",
-
-    faq_title:"కొన్ని ప్రశ్నలు",
-
-    q1:"ఈ పేజీలో ఏమి చూపబడింది?",a1:"భారత్ మరియు ప్రపంచం నుండి ఎంచుకున్న సినిమాలు, సిరీస్‌లు, టీవీ షోలు మరియు క్రికెట్.",
-
-    q2:"ఏ భాషలు అందుబాటులో ఉన్నాయి?",a2:"హిందీ, English, தமிழ், తెలుగు, বাংলা మరియు मराठी.",
-
-    q3:"యాప్‌ని ఎలా ఇన్‌స్టాల్ చేయాలి?",a3:"డౌన్‌లోడ్‌ని నొక్కండి, ఫైల్ తెరిచి Android సూచనలు పాటించండి."
-
-  },
-
-  mr:{
-
-    hero_title:"चित्रपट · मालिका · टीव्ही आणि मनोरंजन",
-
-    hero_sub:"भारत + जग · 56+ निवडक शो",
-
-    trend_title:"भारत + जग",
-
-    step_title:"मोफत अॅप · तुझा वेळ",
-
-    s1t:"डाउनलोड करा",s1d:"डाउनलोड बटणावरून अॅप मिळवा",
-
-    s2t:"इंस्टॉल करा",s2d:"फाइल उघडा आणि सूचना पाळा",
-
-    s3t:"पाहायला सुरुवात करा",s3d:"अॅप उघडा आणि शो पहा",
-
-    faq_title:"काही प्रश्न",
-
-    q1:"हे पृष्ठ काय दाखवते?",a1:"भारत आणि जगातील निवडक चित्रपट, मालिका, टीव्ही शो आणि क्रिकेट.",
-
-    q2:"कोणत्या भाषा उपलब्ध आहेत?",a2:"हिंदी, English, தமிழ், తెలుగు, বাংলা आणि मराठी.",
-
-    q3:"अॅप कसे इंस्टॉल करावे?",a3:"डाउनलोडवर टॅप करा, फाइल उघडा आणि Android सूचना पाळा."
-
-  }
-
-};
-
-
-
-// ===== 内容数据 =====
-
-const shows = [
-
-  {t:"Gajab Raat",cat:"film",lang:"Hindi",origin:"भारतीय"},
-
-  {t:"East of Eden",cat:"series",lang:"English",origin:"अंतरराष्ट्रीय"},
-
-  {t:"Romãnchakam",cat:"film",lang:"Telugu",origin:"भारतीय"},
-
-  {t:"Musafir Cafe",cat:"series",lang:"Hindi",origin:"भारतीय"},
-
-  {t:"Crew Girl",cat:"series",lang:"English",origin:"अंतरराष्ट्रीय"},
-
-  {t:"The Great Indian Kapil Show",cat:"tv",lang:"Hindi",origin:"भारतीय"},
-
-  {t:"Roadies Rebirth",cat:"tv",lang:"Hindi",origin:"भारतीय"},
-
-  {t:"Indian Idol - Legends Return",cat:"tv",lang:"Hindi",origin:"भारतीय"},
-
-  {t:"Kaun Banega Crorepati",cat:"tv",lang:"Hindi",origin:"भारतीय"},
-
-  {t:"India's Best Dancer",cat:"tv",lang:"Hindi",origin:"भारतीय"},
-
-  {t:"UNABOMBER",cat:"series",lang:"English",origin:"अंतरराष्ट्रीय"},
-
-  {t:"Ohh My Dog",cat:"film",lang:"Hindi",origin:"भारतीय"},
-
-  {t:"Lust Stories 3",cat:"film",lang:"Hindi",origin:"भारतीय"},
-
-  {t:"Dhamaal 4",cat:"film",lang:"Hindi",origin:"भारतीय"},
-
-  {t:"Best of the Best",cat:"film",lang:"English",origin:"अंतरराष्ट्रीय"},
-
-  {t:"The Disciple",cat:"film",lang:"English",origin:"अंतरराष्ट्रीय"},
-
-  {t:"Tamil Idol",cat:"tv",lang:"Tamil",origin:"भारतीय"},
-
-  {t:"India: NZ tour",cat:"cricket",lang:"English",origin:"क्रिकेट"},
-
-  {t:"India Women: ZIM series",cat:"cricket",lang:"English",origin:"क्रिकेट"}
+  'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400&q=80'
 
 ];
 
 
 
-// ===== 渲染卡片 =====
+const dramas = [
 
-function render(cat){
+  { title: { bn:'হৃদয়ের কথা', hi:'दिल की बात', en:'Heart\'s Whisper' }, cat:'romance', badge:'New', img: loveImgs[0] },
 
-  const grid=document.getElementById('grid');
+  { title: { bn:'প্রেমের ফাঁদ', hi:'प्यार का जाल', en:'Love Trap' }, cat:'romance', badge:'Hot', img: loveImgs[1] },
 
-  const list=cat==='all'?shows:shows.filter(s=>s.cat===cat);
+  { title: { bn:'বিরহের বাঁশি', hi:'विरह की बांसुरी', en:'Flute of Separation' }, cat:'drama', badge:'', img: loveImgs[2] },
 
-  grid.innerHTML=list.map(s=>`
+  { title: { bn:'ছায়া সন্দেহ', hi:'छाया संदेह', en:'Shadow of Doubt' }, cat:'thriller', badge:'', img: loveImgs[3] },
 
-    <div class="card">
+  { title: { bn:'রাতের প্রেম', hi:'रात का प्यार', en:'Midnight Love' }, cat:'romance', badge:'New', img: loveImgs[4] },
 
-      <div class="poster"></div>
+  { title: { bn:'ভালোবাসার শপথ', hi:'प्यार की कसम', en:'Vow of Love' }, cat:'romance', badge:'18+', img: loveImgs[5] },
 
-      <div class="meta">
+  { title: { bn:'দুটি হৃদয়', hi:'दो दिल', en:'Two Hearts' }, cat:'romance', badge:'', img: loveImgs[6] },
 
-        <div class="tag">${s.lang} · ${s.origin}</div>
+  { title: { bn:'অশ্রুর গল্প', hi:'आंसू की कहानी', en:'Tears of Story' }, cat:'drama', badge:'', img: loveImgs[7] },
 
-        <div class="title">${s.t}</div>
+  { title: { bn:'রহস্যের ছায়া', hi:'रहस्य की छाया', en:'Shadow Mystery' }, cat:'thriller', badge:'Hot', img: loveImgs[8] },
 
-        <div class="sub">${s.cat==='film'?'फ़िल्म':s.cat==='series'?'सीरीज़':s.cat==='tv'?'टीवी':'क्रिकेट'}</div>
+  { title: { bn:'আগুনের ছোঁয়া', hi:'आग का छूत', en:'Touch of Fire' }, cat:'action', badge:'', img: loveImgs[9] },
 
-      </div>
+  { title: { bn:'মনের মানুষ', hi:'मन का इंसान', en:'Soulmate' }, cat:'romance', badge:'New', img: loveImgs[10] },
 
-    </div>`).join('');
+  { title: { bn:'বিদ্রোহী প্রেম', hi:'विद्रोही प्यार', en:'Rebel Love' }, cat:'action', badge:'', img: loveImgs[11] },
+
+  { title: { bn:'ভালোবাসার শেষ অধ্যায়', hi:'प्यार का अंतिम अध्याय', en:'Final Chapter of Love' }, cat:'romance', badge:'', img: loveImgs[12] },
+
+  { title: { bn:'অন্ধ প্রেম', hi:'अंधा प्यार', en:'Blind Love' }, cat:'romance', badge:'18+', img: loveImgs[13] },
+
+  { title: { bn:'প্রেমের প্রতিশোধ', hi:'प्यार का बदला', en:'Revenge of Love' }, cat:'drama', badge:'', img: loveImgs[14] },
+
+  { title: { bn:'দুর্গম প্রেম', hi:'दुर्गम प्यार', en:'Difficult Love' }, cat:'romance', badge:'', img: loveImgs[15] },
+
+  { title: { bn:'নিষিদ্ধ প্রেম', hi:'निषिद्ध प्यार', en:'Forbidden Love' }, cat:'romance', badge:'Hot', img: loveImgs[16] },
+
+  { title: { bn:'ভালোবাসার ফাঁসি', hi:'प्यार का फांसी', en:'Noose of Love' }, cat:'thriller', badge:'', img: loveImgs[17] },
+
+  { title: { bn:'অনন্ত প্রেম', hi:'अनंत प्यार', en:'Eternal Love' }, cat:'romance', badge:'New', img: loveImgs[18] }
+
+];
+
+
+
+const i18n = {
+
+  bn: { heroTitle:'বাংলা স্বল্পদৈর্ঘ্য নাটক', heroSub:'প্রেম, ড্রামা, থ্রিলার - সব এক অ্যাপে', faqTitle:'সচরাচর জিজ্ঞাসা', fq1:'অ্যাপটি কি ফ্রি?', fa1:'হ্যাঁ, Rangora Play সম্পূর্ণ ফ্রি। শুধু ডাউনলোড করুন এবং দেখুন।', fq2:'অ্যাপে কী কী নাটক আছে?', fa2:'রোমান্টিক, ড্রামা, থ্রিলার, অ্যাকশন - সব ধরণের স্বল্পদৈর্ঘ্য নাটক আছে।', fq3:'ডাউনলোড করতে সমস্যা হলে কী করব?', fa3:'বাটনে ক্লিক করে অপেক্ষা করুন। কিছুক্ষণ সময় লাগতে পারে।', stickyText:'Rangora Play - ফ্রি ডাউনলোড', toast:'ডাউনলোড শুরু হচ্ছে...<br>অনুগ্রহ করে অপেক্ষা করুন', catAll:'সব', catRomance:'রোমান্স', catDrama:'ড্রামা', catThriller:'থ্রিলার', catAction:'অ্যাকশন' },
+
+  hi: { heroTitle:'हिंदी शॉर्ट ड्रामा', heroSub:'रोमांस, ड्रामा, थ्रिलर - सब एक ऐप में', faqTitle:'सामान्य प्रश्न', fq1:'क्या ऐप फ्री है?', fa1:'हां, Rangora Play पूरी तरह फ्री है। बस डाउनलोड करें और देखें।', fq2:'ऐप में कौन से ड्रामा हैं?', fa2:'रोमांटिक, ड्रामा, थ्रिलर, एक्शन - सभी प्रकार के शॉर्ट ड्रामा हैं।', fq3:'डाउनलोड में दिक्कत हो तो क्या करें?', fa3:'बटन पर क्लिक करके रुकें। कुछ समय लग सकता है।', stickyText:'Rangora Play - फ्री डाउनलोड', toast:'डाउनलोड शुरू हो रहा है...<br>कृपया प्रतीक्षा करें', catAll:'सब', catRomance:'रोमांस', catDrama:'ड्रामा', catThriller:'थ्रिलर', catAction:'एक्शन' },
+
+  en: { heroTitle:'Bengali Short Dramas', heroSub:'Romance, Drama, Thriller - All in One App', faqTitle:'FAQ', fq1:'Is the app free?', fa1:'Yes, Rangora Play is completely free. Just download and watch.', fq2:'What dramas are available?', fa2:'Romantic, drama, thriller, action - all types of short dramas.', fq3:'What if download fails?', fa3:'Click the button and wait. It may take a few moments.', stickyText:'Rangora Play - Free Download', toast:'Download starting...<br>Please wait', catAll:'All', catRomance:'Romance', catDrama:'Drama', catThriller:'Thriller', catAction:'Action' }
+
+};
+
+
+
+let currentLang = 'bn', currentCat = 'all';
+
+
+
+function setLang(l, btn) {
+
+  currentLang = l;
+
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+
+  btn.classList.add('active');
+
+  const t = i18n[l];
+
+  document.getElementById('heroTitle').textContent = t.heroTitle;
+
+  document.getElementById('heroSub').textContent = t.heroSub;
+
+  document.getElementById('faqTitle').textContent = t.faqTitle;
+
+  document.getElementById('fq1').textContent = t.fq1; document.getElementById('fa1').textContent = t.fa1;
+
+  document.getElementById('fq2').textContent = t.fq2; document.getElementById('fa2').textContent = t.fa2;
+
+  document.getElementById('fq3').textContent = t.fq3; document.getElementById('fa3').textContent = t.fa3;
+
+  document.getElementById('stickyText').textContent = t.stickyText;
+
+  document.querySelectorAll('.cat-btn')[0].textContent = t.catAll;
+
+  document.querySelectorAll('.cat-btn')[1].textContent = t.catRomance;
+
+  document.querySelectorAll('.cat-btn')[2].textContent = t.catDrama;
+
+  document.querySelectorAll('.cat-btn')[3].textContent = t.catThriller;
+
+  document.querySelectorAll('.cat-btn')[4].textContent = t.catAction;
+
+  renderGrid();
 
 }
 
 
 
-// ===== 分类切换 =====
+function renderGrid() {
 
-document.querySelectorAll('.tab').forEach(tab=>{
+  const grid = document.getElementById('grid');
 
-  tab.addEventListener('click',()=>{
+  grid.innerHTML = '';
 
-    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  dramas.filter(d => currentCat === 'all' || d.cat === currentCat).forEach(d => {
 
-    tab.classList.add('active');
+    const card = document.createElement('div');
 
-    render(tab.dataset.cat);
+    card.className = 'card';
 
-  });
+    card.onclick = () => triggerDownload();
 
-});
+    card.innerHTML = `<img src="${d.img}" alt="${d.title[currentLang]}" loading="lazy"><div class="card-overlay"><div class="card-title">${d.title[currentLang]}</div><div class="card-meta">${i18n[currentLang]['cat' + d.cat.charAt(0).toUpperCase() + d.cat.slice(1)]}</div></div>${d.badge ? `<div class="card-badge">${d.badge}</div>` : ''}`;
 
-
-
-// ===== 多语言切换 =====
-
-const sw=document.getElementById('langSwitch');
-
-function applyLang(l){
-
-  document.documentElement.lang=l;
-
-  localStorage.setItem('rangora_lang',l);
-
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-
-    const k=el.getAttribute('data-i18n');
-
-    if(i18n[l]&&i18n[l][k]) el.textContent=i18n[l][k];
+    grid.appendChild(card);
 
   });
 
 }
 
-sw.addEventListener('change',e=>applyLang(e.target.value));
 
-render('all');
 
-applyLang(localStorage.getItem('rangora_lang')||'hi');
+function filterCat(cat, btn) {
+
+  currentCat = cat;
+
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+
+  btn.classList.add('active');
+
+  renderGrid();
+
+}
+
+
+
+function toggleFaq(item) { item.classList.toggle('open'); }
+
+
+
+function triggerDownload() {
+
+  const toast = document.getElementById('toast');
+
+  toast.innerHTML = i18n[currentLang].toast;
+
+  toast.style.display = 'block';
+
+  setTimeout(() => { toast.style.display = 'none'; }, 3000);
+
+  const a = document.createElement('a');
+
+  a.href = APK_URL;
+
+  a.download = 'RangoraPlay.apk';
+
+  document.body.appendChild(a);
+
+  a.click();
+
+  document.body.removeChild(a);
+
+}
+
+
+
+renderGrid();
 
 </script>
 
