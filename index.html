@@ -12,73 +12,73 @@
 
 <style>
 
-  :root{--red:#e53935;--dark:#121212;--card:#1e1e1e;}
+  *{margin:0;padding:0;box-sizing:border-box}
 
-  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:Arial,'Noto Sans Bengali',sans-serif;background:#111;color:#fff;padding-bottom:80px;word-wrap:break-word}
 
-  body{font-family:Arial,'Noto Sans Bengali',sans-serif;background:var(--dark);color:#fff;padding-bottom:70px;}
+  header{background:#1a0505;padding:15px 10px;border-bottom:3px solid #e53935;position:sticky;top:0;z-index:100}
 
-  header{background:#000;border-bottom:2px solid var(--red);padding:15px;display:flex;justify-content:space-between;align-items:center;}
+  .logo{color:#e53935;font-size:28px;font-weight:bold;display:inline-block} .logo span{color:#fff}
 
-  .logo{font-size:24px;font-weight:bold;color:#fff;}.logo span{color:var(--red);}
+  .langs{display:flex;gap:8px;margin-top:10px}
 
-  .langs{display:flex;gap:8px;}
+  .lang-btn{background:#333;color:#fff;border:1px solid #555;padding:6px 12px;border-radius:20px;cursor:pointer;font-size:14px}
 
-  .lang-btn{padding:6px 12px;border-radius:20px;border:none;background:#333;color:#fff;cursor:pointer;font-size:14px;}
+  .lang-btn.active{background:#e53935;border-color:#e53935}
 
-  .lang-btn.active{background:var(--red);}
+  .hero{padding:20px 10px;background:linear-gradient(to bottom,#1a0505,#111);text-align:center}
 
-  .hero{padding:20px 15px;text-align:center;background:linear-gradient(to bottom,#1a0505,#121212);}
+  h1{font-size:24px;margin-bottom:8px;color:#fff}
 
-  .hero h1{font-size:28px;margin-bottom:10px;}
+  .sub{color:#aaa;font-size:14px;margin-bottom:15px}
 
-  .hero p{color:#aaa;font-size:16px;}
+  .cats{display:flex;gap:8px;overflow-x:auto;padding:5px 0;justify-content:center}
 
-  .cats{padding:10px;display:flex;gap:8px;overflow-x:auto;background:#000;}
+  .cat-btn{background:#222;color:#ddd;border:1px solid #444;padding:6px 14px;border-radius:20px;cursor:pointer;white-space:nowrap}
 
-  .cat-btn{padding:6px 14px;border-radius:20px;border:none;background:#333;color:#fff;cursor:pointer;white-space:nowrap;}
+  .cat-btn.active{background:#e53935;color:#fff;border-color:#e53935}
 
-  .cat-btn.active{background:var(--red);}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:15px 10px}
 
-  .grid{padding:15px;display:grid;grid-template-columns:repeat(2,1fr);gap:15px;}
+  .card{position:relative;border-radius:10px;overflow:hidden;background:#222;aspect-ratio:2/3;cursor:pointer;border:1px solid #333}
 
-  .card{position:relative;background:var(--card);border-radius:10px;overflow:hidden;cursor:pointer;aspect-ratio:2/3;}
+  .card img,.card svg{width:100%;height:100%;object-fit:cover;display:block}
 
-  .card img{width:100%;height:100%;object-fit:cover;display:block;}
+  .overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,#000);padding:40px 10px 10px;color:#fff}
 
-  .card-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,#000);padding:15px 10px 10px;}
+  .title{font-size:15px;font-weight:bold;margin-bottom:3px;text-shadow:1px 1px 2px #000}
 
-  .card-title{font-size:16px;font-weight:bold;margin-bottom:4px;}
+  .meta{font-size:12px;color:#e53935}
 
-  .card-meta{font-size:12px;color:#aaa;}
+  .badge{position:absolute;top:8px;right:8px;background:#e53935;color:#fff;padding:3px 8px;border-radius:12px;font-size:11px;font-weight:bold;z-index:2}
 
-  .card-badge{position:absolute;top:10px;right:10px;background:var(--red);color:#fff;padding:3px 8px;border-radius:12px;font-size:12px;font-weight:bold;}
+  .faq{padding:20px 15px;background:#1a1a1a;margin:15px 10px;border-radius:10px;border:1px solid #333}
 
-  .faq{padding:20px 15px;}
+  .faq h2{margin-bottom:15px;font-size:20px;border-bottom:2px solid #e53935;display:inline-block;padding-bottom:5px}
 
-  .faq h2{margin-bottom:15px;font-size:22px;}
+  .faq-item{margin-bottom:12px;border-bottom:1px solid #333;padding-bottom:10px}
 
-  .faq-item{background:var(--card);border-radius:8px;margin-bottom:10px;padding:12px;}
+  .faq-q{font-weight:bold;cursor:pointer;font-size:15px;color:#ddd}
 
-  .faq-q{font-weight:bold;cursor:pointer;}
+  .faq-a{margin-top:8px;color:#999;font-size:13px;display:none;line-height:1.5}
 
-  .faq-a{display:none;margin-top:8px;color:#aaa;font-size:14px;}
+  .faq-item.open .faq-a{display:block}
 
-  .faq-item.open .faq-a{display:block;}
+  .sticky{position:fixed;bottom:0;left:0;right:0;background:#1a0505;border-top:3px solid #e53935;padding:12px 15px;display:flex;align-items:center;justify-content:space-between;z-index:100}
 
-  .sticky{position:fixed;bottom:0;left:0;right:0;background:#000;border-top:2px solid var(--red);padding:12px 15px;display:flex;justify-content:space-between;align-items:center;z-index:100;}
+  .sticky-text{font-size:16px;font-weight:bold;color:#fff}
 
-  .sticky-text{font-size:16px;font-weight:bold;}
+  .sticky-btn{background:#e53935;color:#fff;border:none;padding:10px 25px;border-radius:25px;font-size:15px;cursor:pointer;font-weight:bold}
 
-  .sticky-btn{background:var(--red);color:#fff;border:none;padding:10px 24px;border-radius:25px;font-size:16px;cursor:pointer;}
-
-  #toast{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.9);color:#fff;padding:15px 25px;border-radius:8px;z-index:200;text-align:center;font-size:16px;}
+  #toast{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.95);color:#fff;padding:20px 30px;border-radius:10px;z-index:200;text-align:center;font-size:16px;border:2px solid #e53935;box-shadow:0 0 20px rgba(229,57,53,0.5)}
 
 </style>
 
 </head>
 
 <body>
+
+
 
 <header>
 
@@ -88,7 +88,7 @@
 
     <button class="lang-btn active" onclick="setLang('bn',this)">বাংলা</button>
 
-    <button class="lang-btn" onclick="setLang('hi',this)">हिन्दी</button>
+    <button class="lang-btn" onclick="setLang('hi',this)">हिंदी</button>
 
     <button class="lang-btn" onclick="setLang('en',this)">English</button>
 
@@ -100,25 +100,23 @@
 
 <div class="hero">
 
-  <h1 id="heroTitle">Bengali Short Dramas</h1>
+  <h1 id="heroTitle">বাংলা শর্ট ড্রামা</h1>
 
-  <p id="heroSub">Romance, Drama, Thriller - All in One App</p>
+  <div class="sub" id="heroSub">রোমান্স, ড্রামা, থ্রিলার - এক অ্যাপে সব</div>
 
-</div>
+  <div class="cats">
 
+    <button class="cat-btn active" id="catAll" onclick="filterCat('all',this)">সব</button>
 
+    <button class="cat-btn" id="catRomance" onclick="filterCat('romance',this)">রোমান্স</button>
 
-<div class="cats">
+    <button class="cat-btn" id="catDrama" onclick="filterCat('drama',this)">ড্রামা</button>
 
-  <button class="cat-btn active" onclick="filterCat('all',this)" id="catAll">All</button>
+    <button class="cat-btn" id="catThriller" onclick="filterCat('thriller',this)">থ্রিলার</button>
 
-  <button class="cat-btn" onclick="filterCat('romance',this)" id="catRomance">Romance</button>
+    <button class="cat-btn" id="catAction" onclick="filterCat('action',this)">অ্যাকশন</button>
 
-  <button class="cat-btn" onclick="filterCat('drama',this)" id="catDrama">Drama</button>
-
-  <button class="cat-btn" onclick="filterCat('thriller',this)" id="catThriller">Thriller</button>
-
-  <button class="cat-btn" onclick="filterCat('action',this)" id="catAction">Action</button>
+  </div>
 
 </div>
 
@@ -130,29 +128,29 @@
 
 <div class="faq">
 
-  <h2 id="faqTitle">FAQ</h2>
+  <h2 id="faqTitle">প্রশ্ন ও উত্তর</h2>
 
   <div class="faq-item" onclick="toggleFaq(this)">
 
-    <div class="faq-q" id="fq1">Is the app free?</div>
+    <div class="faq-q" id="fq1">অ্যাপটি কি ফ্রি?</div>
 
-    <div class="faq-a" id="fa1">Yes, Rangora Play is completely free. Just download and watch.</div>
+    <div class="faq-a" id="fa1">হ্যাঁ, রাঙ্গোরা প্লে সম্পূর্ণ ফ্রি। ডাউনলোড করে দেখুন।</div>
 
   </div>
 
   <div class="faq-item" onclick="toggleFaq(this)">
 
-    <div class="faq-q" id="fq2">What dramas are available?</div>
+    <div class="faq-q" id="fq2">কী কী ড্রামা আছে?</div>
 
-    <div class="faq-a" id="fa2">Romantic, drama, thriller, action - all types of short dramas.</div>
+    <div class="faq-a" id="fa2">রোমান্টিক, ড্রামা, থ্রিলার, অ্যাকশন - সব ধরনের শর্ট ড্রামা।</div>
 
   </div>
 
   <div class="faq-item" onclick="toggleFaq(this)">
 
-    <div class="faq-q" id="fq3">What if download fails?</div>
+    <div class="faq-q" id="fq3">ডাউনলোড না হলে?</div>
 
-    <div class="faq-a" id="fa3">Click the button and wait. It may take a few moments.</div>
+    <div class="faq-a" id="fa3">বাটনে ক্লিক করুন এবং অপেক্ষা করুন। কিছুক্ষণ লাগতে পারে।</div>
 
   </div>
 
@@ -162,9 +160,9 @@
 
 <div class="sticky">
 
-  <div class="sticky-text" id="stickyText">Rangora Play - Free Download</div>
+  <div class="sticky-text" id="stickyText">রাঙ্গোরা প্লে - ফ্রি ডাউনলোড</div>
 
-  <button class="sticky-btn" onclick="triggerDownload()" id="stickyBtn">Download</button>
+  <button class="sticky-btn" id="stickyBtn" onclick="triggerDownload()">ডাউনলোড</button>
 
 </div>
 
@@ -180,65 +178,61 @@ const APK_URL = "https://kepj273g1ker.xalvioncraft.com/Upcc1RsKbcDc";
 
 
 
-// 19张真实爱情图 Base64 (内联，无外链，保证加载)
+// 孟加拉本土短剧风格 SVG 海报 (内联，永不裂图)
 
-const IMG = {
+const IMG_ROMANCE = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600'><defs><linearGradient id='g1' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%23ff7e5f'/><stop offset='1' stop-color='%23feb47b'/></linearGradient></defs><rect width='400' height='600' fill='url(%23g1)'/><circle cx='200' cy='250' r='80' fill='%23fff' opacity='0.3'/><path d='M120,450 Q200,300 280,450 L280,600 L120,600 Z' fill='%23e53935' opacity='0.8'/><text x='200' y='550' font-size='24' fill='%23fff' text-anchor='middle' font-weight='bold'>Prem</text></svg>";
 
-  i1:"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBUVFRgVFRUYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgcIS4lHB4rIRgYJjgmKy8xNTU1GiQ7QDszPy40NTEBDAwMEA8QHxISHzQrJCs0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NP/AABEIAMEBBAMBIgACEQEDEQH/xAAMAAACAwAAAAAAAAAAAAAAAAQHCAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQBAQAAAAAAAAAAAAAAAAAAAAr/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCjgICAgID/2Q==", // 占位(实际代码会注入真实图)
+const IMG_DRAMA = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600'><rect width='400' height='600' fill='%232c3e50'/><circle cx='200' cy='220' r='90' fill='%23e74c3c' opacity='0.7'/><path d='M150,600 Q200,350 250,600 Z' fill='%23111'/><text x='200' y='550' font-size='24' fill='%23ecf0f1' text-anchor='middle' font-weight='bold'>Drama</text></svg>";
 
-  // 因对话单轮输出限制，此处演示结构，实际运行请使用下方提供的完整大文件
+const IMG_THRILLER = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600'><rect width='400' height='600' fill='%23111'/><polygon points='0,0 400,0 400,200 0,400' fill='%23333'/><circle cx='280' cy='180' r='60' fill='%23fff' opacity='0.1'/><path d='M250,250 L300,350 L200,600 L100,600 Z' fill='%23000' opacity='0.8'/><text x='200' y='550' font-size='24' fill='%23e53935' text-anchor='middle' font-weight='bold'>Thriller</text></svg>";
 
-};
+const IMG_ACTION = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600'><rect width='400' height='600' fill='%23d35400'/><path d='M0,300 L400,100 L400,600 L0,600 Z' fill='%23c0392b'/><circle cx='200' cy='250' r='70' fill='%23f1c40f' opacity='0.5'/><text x='200' y='550' font-size='24' fill='%23fff' text-anchor='middle' font-weight='bold'>Action</text></svg>";
 
+const IMG_BEAUTY = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600'><defs><linearGradient id='g2' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23e53935'/><stop offset='1' stop-color='%238e24aa'/></linearGradient></defs><rect width='400' height='600' fill='url(%23g2)'/><ellipse cx='200' cy='230' rx='90' ry='110' fill='%23ffccbc' opacity='0.8'/><path d='M100,600 Q200,350 300,600 Z' fill='%23c2185b'/><text x='200' y='550' font-size='22' fill='%23fff' text-anchor='middle' font-weight='bold'>Beauty</text></svg>";
 
-
-// 真实场景：这里已包含19张爱情图base64，为防截断，提供核心修复版外链+兜底，若需纯base64请告知我分片发你
-
-// 为保证你直接可用，这里采用"高可用外链+onerror兜底纯色"防止裂图：
-
-const getImg = (id) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=400&q=80`;
+const IMG_COUPLE = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600'><rect width='400' height='600' fill='%23ffb74d'/><circle cx='150' cy='250' r='60' fill='%23333' opacity='0.7'/><circle cx='250' cy='250' r='60' fill='%23fff' opacity='0.7'/><path d='M100,600 Q200,300 300,600 Z' fill='%23e53935' opacity='0.6'/><text x='200' y='550' font-size='24' fill='%23fff' text-anchor='middle' font-weight='bold'>Couple</text></svg>";
 
 
 
 const dramas = [
 
-  {title:{bn:"হৃদয়ের কথা",hi:"दिल की बात",en:"Heart's Talk"}, cat:"romance", img:getImg("1516589178581-6cd7833ae3b2"), badge:"New"},
+  {title:{bn:"হৃদয়ের কথা",hi:"दिल की बात",en:"Heart's Tale"}, cat:"romance", img:IMG_ROMANCE, badge:"New"},
 
-  {title:{bn:"প্রেমের ফাঁদ",hi:"प्यार का जाल",en:"Love Trap"}, cat:"romance", img:getImg("1529626455594-4ff0802cfb7e"), badge:"Hot"},
+  {title:{bn:"প্রেমের ফাঁদ",hi:"प्यार की जाल",en:"Love Trap"}, cat:"romance", img:IMG_COUPLE, badge:"Hot"},
 
-  {title:{bn:"বিরহের বাঁশি",hi:"विरह की बांसुरी",en:"Separation"}, cat:"drama", img:getImg("1500530855697-b586d89ba3ee")},
+  {title:{bn:"বিরহের বাঁশি",hi:"विरह की बांसुरी",en:"Separation"}, cat:"drama", img:IMG_DRAMA},
 
-  {title:{bn:"ছায়া সন্দেহ",hi:"साया का संदेह",en:"Shadow Doubt"}, cat:"thriller", img:getImg("1519681393784-d120267933ba")},
+  {title:{bn:"ছায়া সন্দেহ",hi:"संदेह की छाया",en:"Shadow Doubt"}, cat:"thriller", img:IMG_THRILLER},
 
-  {title:{bn:"রাতের প্রেম",hi:"रात का प्यार",en:"Night Love"}, cat:"romance", img:getImg("1494774154235-2c5c6f0b9a1f"), badge:"New"},
+  {title:{bn:"রাতের প্রেম",hi:"रात का प्यार",en:"Night Love"}, cat:"romance", img:IMG_BEAUTY, badge:"New"},
 
-  {title:{bn:"ভালোবাসার শপথ",hi:"प्यार की शपथ",en:"Love Oath"}, cat:"romance", img:getImg("1519741497674-611481863552"), badge:"18+"},
+  {title:{bn:"ভালোবাসার শপথ",hi:"प्यार की कसम",en:"Love Oath"}, cat:"romance", img:IMG_ROMANCE, badge:"18+"},
 
-  {title:{bn:"দুরন্ত প্রেম",hi:"दीवाना प्यार",en:"Wild Love"}, cat:"romance", img:getImg("1535905557558-afc4877a26fc")},
+  {title:{bn:"অন্তরের আগুন",hi:"अंतर की आग",en:"Inner Fire"}, cat:"drama", img:IMG_DRAMA},
 
-  {title:{bn:"অশ্রুর প্রেম",hi:"आंसुओं का प्यार",en:"Tearful Love"}, cat:"drama", img:getImg("1485846234645-a62644f84728")},
+  {title:{bn:"রহস্য রাত",hi:"रहस्यमयी रात",en:"Mystery Night"}, cat:"thriller", img:IMG_THRILLER},
 
-  {title:{bn:"গোপন রাত",hi:"गुप्त रात",en:"Secret Night"}, cat:"thriller", img:getImg("1478720568477-152d9c6b1d1b")},
+  {title:{bn:"দুরন্ত প্রেম",hi:"दुर्दांत प्यार",en:"Wild Love"}, cat:"action", img:IMG_ACTION, badge:"Hot"},
 
-  {title:{bn:"মেঘের প্রেম",hi:"बादलों का प्यार",en:"Cloud Love"}, cat:"romance", img:getImg("1418065460487-3e41a6c84dc5")},
+  {title:{bn:"শেষ বিদায়",hi:"अंतिम विदाई",en:"Final Goodbye"}, cat:"drama", img:IMG_DRAMA},
 
-  {title:{bn:"বিদায়ের দিন",hi:"विदाई का दिन",en:"Farewell Day"}, cat:"drama", img:getImg("1501785888041-af3ef285b470")},
+  {title:{bn:"প্রেমের সুর",hi:"प्यार की धुन",en:"Love Tune"}, cat:"romance", img:IMG_COUPLE},
 
-  {title:{bn:"অন্তরের আলো",hi:"दिल की रोशनी",en:"Inner Light"}, cat:"romance", img:getImg("1495567720989-d3c4b48d97b1")},
+  {title:{bn:"নিখোঁজ",hi:"लापता",en:"Missing"}, cat:"thriller", img:IMG_THRILLER, badge:"New"},
 
-  {title:{bn:"রহস্য প্রেম",hi:"रहस्यमयी प्यार",en:"Mystery Love"}, cat:"thriller", img:getImg("1500534314209-a25ddb2bd429")},
+  {title:{bn:"রক্তিম সন্ধ্যা",hi:"रक्तिम संध्या",en:"Bloody Eve"}, cat:"action", img:IMG_ACTION},
 
-  {title:{bn:"যুদ্ধ প্রেম",hi:"जंग प्यार",en:"War Love"}, cat:"action", img:getImg("1534438327276-14e5300c3a48")},
+  {title:{bn:"মায়াবী মুখ",hi:"मायावी चेहरा",en:"Illusive Face"}, cat:"thriller", img:IMG_THRILLER},
 
-  {title:{bn:"স্বপ্নের সাথী",hi:"सपनों का साथी",en:"Dream Partner"}, cat:"romance", img:getImg("1517841901961-7a2c91a7b8f1")},
+  {title:{bn:"প্রেমের পত্র",hi:"प्यार का पत्र",en:"Love Letter"}, cat:"romance", img:IMG_BEAUTY},
 
-  {title:{bn:"নিঃস্ব প্রেম",hi:"बेबस प्यार",en:"Helpless Love"}, cat:"drama", img:getImg("1469474968028-56623f02e42e")},
+  {title:{bn:"বিপদ সংকেত",hi:"खतरे का संकेत",en:"Danger Signal"}, cat:"action", img:IMG_ACTION, badge:"18+"},
 
-  {title:{bn:"আগুন প্রেম",hi:"आग का प्यार",en:"Fire Love"}, cat:"action", img:getImg("1500534314209-a25ddb2bd429")},
+  {title:{bn:"দ্বন্দ্ব",hi:"संघर्ष",en:"Conflict"}, cat:"drama", img:IMG_DRAMA},
 
-  {title:{bn:"মায়াবী রাত",hi:"जादुई रात",en:"Magical Night"}, cat:"romance", img:getImg("1519682337058-a94d519337bc"), badge:"Hot"},
+  {title:{bn:"অপেক্ষা",hi:"इंतजार",en:"Wait"}, cat:"romance", img:IMG_ROMANCE},
 
-  {title:{bn:"শেষ বার",hi:"आखिरी बार",en:"Last Time"}, cat:"drama", img:getImg("1485470733090-0aae1788d5af")}
+  {title:{bn:"আত্মা",hi:"आत्मा",en:"Soul"}, cat:"thriller", img:IMG_THRILLER}
 
 ];
 
@@ -246,11 +240,11 @@ const dramas = [
 
 const i18n = {
 
-  bn:{heroTitle:"বাংলা শর্ট ড্রামা", heroSub:"রোমান্স, ড্রামা, থ্রিলার - এক অ্যাপে", faqTitle:"সাধারণ প্রশ্ন", fq1:"অ্যাপটি কি ফ্রি?", fa1:"হ্যাঁ, রাঙোরা প্লে সম্পূর্ণ ফ্রি। ডাউনলোড করুন এবং দেখুন।", fq2:"কী কী ড্রামা আছে?", fa2:"রোমান্স, ড্রামা, থ্রিলার, অ্যাকশন - সব ধরনের শর্ট ড্রামা।", fq3:"ডাউনলোড না হলে?", fa3:"বাটনে ক্লিক করুন এবং অপেক্ষা করুন। কিছুক্ষণ লাগতে পারে।", stickyText:"রাঙোরা প্লে - ফ্রি ডাউনলোড", toast:"ডাউনলোড শুরু হচ্ছে...<br>অপেক্ষা করুন", catAll:"সব", catRomance:"রোমান্স", catDrama:"ড্রামা", catThriller:"থ্রিলার", catAction:"অ্যাকশন", btn:"ডাউনলোড"},
+  bn:{heroTitle:"বাংলা শর্ট ড্রামা", heroSub:"রোমান্স, ড্রামা, থ্রিলার - এক অ্যাপে সব", faqTitle:"প্রশ্ন ও উত্তর", fq1:"অ্যাপটি কি ফ্রি?", fa1:"হ্যাঁ, রাঙ্গোরা প্লে সম্পূর্ণ ফ্রি। ডাউনলোড করে দেখুন।", fq2:"কী কী ড্রামা আছে?", fa2:"রোমান্টিক, ড্রামা, থ্রিলার, অ্যাকশন - সব ধরনের শর্ট ড্রামা।", fq3:"ডাউনলোড না হলে?", fa3:"বাটনে ক্লিক করুন এবং অপেক্ষা করুন। কিছুক্ষণ লাগতে পারে।", stickyText:"রাঙ্গোরা প্লে - ফ্রি ডাউনলোড", toast:"ডাউনলোড শুরু হচ্ছে...<br>অপেক্ষা করুন", catAll:"সব", catRomance:"রোমান্স", catDrama:"ড্রামা", catThriller:"থ্রিলার", catAction:"অ্যাকশন", btn:"ডাউনলোড"},
 
-  hi:{heroTitle:"बंगाली शॉर्ट ड्रामा", heroSub:"रोमांस, ड्रामा, थ्रिलर - एक ऐप में", faqTitle:"सामान्य प्रश्न", fq1:"क्या ऐप फ्री है?", fa1:"हाँ, रांगोरा प्ले पूरी तरह फ्री है। डाउनलोड करें और देखें।", fq2:"कौन से ड्रामा हैं?", fa2:"रोमांस, ड्रामा, थ्रिलर, एक्शन - सभी प्रकार के शॉर्ट ड्रामा।", fq3:"डाउनलोड न हो तो?", fa3:"बटन पर क्लिक करें और प्रतीक्षा करें। कुछ समय लग सकता है।", stickyText:"रांगोरा प्ले - फ्री डाउनलोड", toast:"डाउनलोड शुरू हो रहा है...<br>प्रतीक्षा करें", catAll:"सभी", catRomance:"रोमांस", catDrama:"ड्रामा", catThriller:"थ्रिलर", catAction:"एक्शन", btn:"डाउनलोड"},
+  hi:{heroTitle:"बंगाली शॉर्ट ड्रामा", heroSub:"रोमांस, ड्रामा, थ्रिलर - एक ऐप में सब", faqTitle:"सवाल और जवाब", fq1:"क्या ऐप फ्री है?", fa1:"हाँ, रांगोरा प्ले पूरी तरह फ्री है।", fq2:"कौन से ड्रामा हैं?", fa2:"रोमांटिक, ड्रामा, थ्रिलर, एक्शन - सभी।", fq3:"डाउनलोड ना हो?", fa3:"बटन दबाएं और इंतजार करें।", stickyText:"रांगोरा प्ले - फ्री डाउनलोड", toast:"डाउनलोड शुरू हो रहा है...<br>इंतजार करें", catAll:"सभी", catRomance:"रोमांस", catDrama:"ड्रामा", catThriller:"थ्रिलर", catAction:"एक्शन", btn:"डाउनलोड"},
 
-  en:{heroTitle:"Bengali Short Dramas", heroSub:"Romance, Drama, Thriller - All in One App", faqTitle:"FAQ", fq1:"Is the app free?", fa1:"Yes, Rangora Play is completely free. Just download and watch.", fq2:"What dramas are available?", fa2:"Romantic, drama, thriller, action - all types of short dramas.", fq3:"What if download fails?", fa3:"Click the button and wait. It may take a few moments.", stickyText:"Rangora Play - Free Download", toast:"Download starting...<br>Please wait", catAll:"All", catRomance:"Romance", catDrama:"Drama", catThriller:"Thriller", catAction:"Action", btn:"Download"}
+  en:{heroTitle:"Bengali Short Dramas", heroSub:"Romance, Drama, Thriller - All in One App", faqTitle:"FAQ", fq1:"Is the app free?", fa1:"Yes, Rangora Play is completely free.", fq2:"What dramas are available?", fa2:"Romantic, drama, thriller, action - all types.", fq3:"What if download fails?", fa3:"Click the button and wait. It may take a few moments.", stickyText:"Rangora Play - Free Download", toast:"Download starting...<br>Please wait", catAll:"All", catRomance:"Romance", catDrama:"Drama", catThriller:"Thriller", catAction:"Action", btn:"Download"}
 
 };
 
@@ -260,7 +254,7 @@ let currentLang='bn', currentCat='all';
 
 
 
-function setLang(l, btn){
+function setLang(l, btn) {
 
   currentLang=l;
 
@@ -302,7 +296,7 @@ function setLang(l, btn){
 
 
 
-function renderGrid(){
+function renderGrid() {
 
   const grid=document.getElementById('grid');
 
@@ -318,7 +312,7 @@ function renderGrid(){
 
     const catName=i18n[currentLang]['cat'+d.cat.charAt(0).toUpperCase()+d.cat.slice(1)];
 
-    card.innerHTML=`<img src="${d.img}" alt="${d.title[currentLang]}" onerror="this.onerror=null;this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNjAwIiBmaWxsPSIjMzMzIj48L3N2Zz4=';this.style.objectFit='cover'"><div class="card-overlay"><div class="card-title">${d.title[currentLang]}</div><div class="card-meta">${catName}</div></div>${d.badge?`<div class="card-badge">${d.badge}</div>`:''}`;
+    card.innerHTML=`<img src="${d.img}" alt="${d.title[currentLang]}"><div class="overlay"><div class="title">${d.title[currentLang]}</div><div class="meta">${catName}</div></div>${d.badge?`<div class="badge">${d.badge}</div>`:''}`;
 
     grid.appendChild(card);
 
@@ -328,7 +322,7 @@ function renderGrid(){
 
 
 
-function filterCat(cat, btn){
+function filterCat(cat, btn) {
 
   currentCat=cat;
 
@@ -346,7 +340,7 @@ function toggleFaq(item){item.classList.toggle('open');}
 
 
 
-function triggerDownload(){
+function triggerDownload() {
 
   const toast=document.getElementById('toast');
 
@@ -371,10 +365,6 @@ function triggerDownload(){
 }
 
 
-
-// 初始化
-
-document.getElementById('stickyBtn').textContent=i18n.bn.btn;
 
 renderGrid();
 
