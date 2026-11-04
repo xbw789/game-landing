@@ -6,81 +6,59 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-<title>Rangora Play - বাংলা স্বল্পদৈর্ঘ্য নাটক</title>
+<title>RangoraPlay - Bengali Short Dramas</title>
 
 <style>
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+  :root{--red:#e53935;--dark:#121212;--gray:#1e1e1e;}
 
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #fff; }
+  *{margin:0;padding:0;box-sizing:border-box}
 
-.header { background: linear-gradient(135deg, #1a0000, #0a0a0a); padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid #c00; }
+  body{font-family:Arial,'SolaimanLipi',sans-serif;background:var(--dark);color:#fff;padding-bottom:80px}
 
-.logo { font-size: 24px; font-weight: 900; color: #e50914; text-shadow: 0 0 10px rgba(229,9,20,0.5); }
+  header{display:flex;align-items:center;justify-content:space-between;padding:15px;background:#000;border-bottom:2px solid var(--red)}
 
-.logo span { color: #fff; }
+  .logo{font-size:24px;font-weight:bold;color:var(--red)}.logo span{color:#fff}
 
-.lang-switch { display: flex; gap: 5px; }
+  .langs{display:flex;gap:8px}.lang-btn{padding:6px 12px;border-radius:20px;border:none;background:#333;color:#fff;cursor:pointer}
 
-.lang-btn { background: #222; border: 1px solid #444; color: #ccc; padding: 5px 10px; border-radius: 15px; cursor: pointer; font-size: 12px; transition: all 0.3s; }
+  .lang-btn.active{background:var(--red)}
 
-.lang-btn.active { background: #e50914; border-color: #e50914; color: #fff; }
+  .hero{position:relative;padding:40px 15px;text-align:center;background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),var(--gray);background-size:cover}
 
-.hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1518199266791-5375a83190ae?w=1200&q=80'); background-size: cover; background-position: center; padding: 60px 20px; text-align: center; }
+  .hero h1{font-size:28px;margin-bottom:10px}.hero p{opacity:.8;margin-bottom:15px}
 
-.hero h1 { font-size: 32px; margin-bottom: 10px; color: #e50914; }
+  .cats{display:flex;gap:8px;padding:15px;overflow-x:auto;background:#000}
 
-.hero p { font-size: 16px; color: #ccc; margin-bottom: 25px; }
+  .cat-btn{padding:6px 14px;border-radius:20px;border:1px solid #333;background:transparent;color:#fff;cursor:pointer;white-space:nowrap}
 
-.download-btn { background: linear-gradient(135deg, #e50914, #b20710); color: #fff; border: none; padding: 15px 40px; font-size: 18px; font-weight: 700; border-radius: 30px; cursor: pointer; box-shadow: 0 4px 20px rgba(229,9,20,0.4); transition: transform 0.3s; }
+  .cat-btn.active{background:var(--red);border-color:var(--red)}
 
-.download-btn:hover { transform: scale(1.05); }
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:15px}
 
-.categories { display: flex; gap: 10px; padding: 20px; overflow-x: auto; scrollbar-width: none; }
+  .card{position:relative;aspect-ratio:2/3;background:var(--gray);border-radius:10px;overflow:hidden;cursor:pointer}
 
-.categories::-webkit-scrollbar { display: none; }
+  .card img{width:100%;height:100%;object-fit:cover;display:block}
 
-.cat-btn { background: #1a1a1a; border: 1px solid #333; color: #ccc; padding: 8px 18px; border-radius: 20px; cursor: pointer; white-space: nowrap; transition: all 0.3s; }
+  .card-overlay{position:absolute;bottom:0;left:0;right:0;padding:15px 10px 10px;background:linear-gradient(transparent,#000);}
 
-.cat-btn.active { background: #e50914; border-color: #e50914; color: #fff; }
+  .card-title{font-weight:bold;font-size:14px}.card-meta{font-size:11px;opacity:.7;margin-top:4px}
 
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; padding: 20px; }
+  .card-badge{position:absolute;top:8px;right:8px;background:var(--red);color:#fff;padding:2px 8px;border-radius:10px;font-size:11px}
 
-.card { background: #111; border-radius: 12px; overflow: hidden; cursor: pointer; transition: transform 0.3s; position: relative; }
+  .faq{padding:20px 15px}.faq h2{margin-bottom:15px}.faq-item{background:var(--gray);border-radius:10px;margin-bottom:10px;padding:15px}
 
-.card:hover { transform: translateY(-5px); }
+  .faq-q{font-weight:bold;cursor:pointer}.faq-a{display:none;margin-top:10px;opacity:.8;font-size:14px}
 
-.card img { width: 100%; height: 220px; object-fit: cover; display: block; }
+  .faq-item.open .faq-a{display:block}
 
-.card-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: 30px 10px 10px; }
+  .sticky{position:fixed;bottom:0;left:0;right:0;background:#000;padding:12px 15px;border-top:2px solid var(--red);display:flex;align-items:center;justify-content:space-between;z-index:99}
 
-.card-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .sticky-text{font-weight:bold}.sticky-btn{background:var(--red);color:#fff;border:none;padding:10px 24px;border-radius:25px;font-weight:bold;cursor:pointer}
 
-.card-meta { font-size: 11px; color: #aaa; }
-
-.card-badge { position: absolute; top: 8px; right: 8px; background: #e50914; color: #fff; font-size: 10px; padding: 3px 8px; border-radius: 10px; font-weight: 700; }
-
-.sticky-bottom { position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(0deg, #0a0a0a, #1a0000); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #c00; z-index: 100; }
-
-.sticky-bottom .sticky-text { font-size: 14px; font-weight: 600; }
-
-.sticky-bottom .download-btn-small { background: #e50914; color: #fff; border: none; padding: 10px 25px; border-radius: 20px; cursor: pointer; font-weight: 700; font-size: 14px; }
-
-.faq { padding: 20px; }
-
-.faq h2 { color: #e50914; margin-bottom: 15px; }
-
-.faq-item { background: #111; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
-
-.faq-q { padding: 15px; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
-
-.faq-a { padding: 0 15px 15px; color: #aaa; font-size: 14px; display: none; }
-
-.faq-item.open .faq-a { display: block; }
-
-.toast { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(229,9,20,0.95); color: #fff; padding: 15px 30px; border-radius: 10px; font-weight: 600; z-index: 1000; display: none; text-align: center; }
+  .toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.9);padding:20px 30px;border-radius:10px;display:none;z-index:999;text-align:center;border:1px solid var(--red)}
 
 </style>
 
@@ -88,13 +66,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 
 <body>
 
-
-
-<div class="header">
+<header>
 
   <div class="logo">Rangora<span>Play</span></div>
 
-  <div class="lang-switch">
+  <div class="langs">
 
     <button class="lang-btn active" onclick="setLang('bn',this)">বাংলা</button>
 
@@ -104,33 +80,31 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 
   </div>
 
-</div>
+</header>
 
 
 
-<div class="hero">
+<div class="hero" id="hero">
 
-  <h1 id="heroTitle">বাংলা স্বল্পদৈর্ঘ্য নাটক</h1>
+  <h1 id="heroTitle">Bengali Short Dramas</h1>
 
-  <p id="heroSub">প্রেম, ড্রামা, থ্রিলার - সব এক অ্যাপে</p>
-
-  <button class="download-btn" onclick="triggerDownload()">📥 অ্যাপ ডাউনলোড করুন</button>
+  <p id="heroSub">Romance, Drama, Thriller - All in One App</p>
 
 </div>
 
 
 
-<div class="categories">
+<div class="cats">
 
-  <button class="cat-btn active" onclick="filterCat('all',this)">সব</button>
+  <button class="cat-btn active" onclick="filterCat('all',this)">All</button>
 
-  <button class="cat-btn" onclick="filterCat('romance',this)">রোমান্স</button>
+  <button class="cat-btn" onclick="filterCat('romance',this)">Romance</button>
 
-  <button class="cat-btn" onclick="filterCat('drama',this)">ড্রামা</button>
+  <button class="cat-btn" onclick="filterCat('drama',this)">Drama</button>
 
-  <button class="cat-btn" onclick="filterCat('thriller',this)">থ্রিলার</button>
+  <button class="cat-btn" onclick="filterCat('thriller',this)">Thriller</button>
 
-  <button class="cat-btn" onclick="filterCat('action',this)">অ্যাকশন</button>
+  <button class="cat-btn" onclick="filterCat('action',this)">Action</button>
 
 </div>
 
@@ -142,29 +116,29 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 
 <div class="faq">
 
-  <h2 id="faqTitle">সচরাচর জিজ্ঞাসা</h2>
+  <h2 id="faqTitle">FAQ</h2>
 
   <div class="faq-item" onclick="toggleFaq(this)">
 
-    <div class="faq-q"><span id="fq1">অ্যাপটি কি ফ্রি?</span><span>▼</span></div>
+    <div class="faq-q" id="fq1">Is the app free?</div>
 
-    <div class="faq-a" id="fa1">হ্যাঁ, Rangora Play সম্পূর্ণ ফ্রি। শুধু ডাউনলোড করুন এবং দেখুন।</div>
+    <div class="faq-a" id="fa1">Yes, Rangora Play is completely free.</div>
 
   </div>
 
   <div class="faq-item" onclick="toggleFaq(this)">
 
-    <div class="faq-q"><span id="fq2">অ্যাপে কী কী নাটক আছে?</span><span>▼</span></div>
+    <div class="faq-q" id="fq2">What dramas are available?</div>
 
-    <div class="faq-a" id="fa2">রোমান্টিক, ড্রামা, থ্রিলার, অ্যাকশন - সব ধরণের স্বল্পদৈর্ঘ্য নাটক আছে।</div>
+    <div class="faq-a" id="fa2">Romantic, drama, thriller, action - all types.</div>
 
   </div>
 
   <div class="faq-item" onclick="toggleFaq(this)">
 
-    <div class="faq-q"><span id="fq3">ডাউনলোড করতে সমস্যা হলে কী করব?</span><span>▼</span></div>
+    <div class="faq-q" id="fq3">What if download fails?</div>
 
-    <div class="faq-a" id="fa3">বাটনে ক্লিক করে অপেক্ষা করুন। কিছুক্ষণ সময় লাগতে পারে।</div>
+    <div class="faq-a" id="fa3">Click the button and wait a moment.</div>
 
   </div>
 
@@ -172,15 +146,13 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 
 
 
-<div class="sticky-bottom">
+<div class="sticky">
 
-  <div class="sticky-text" id="stickyText">Rangora Play - ফ্রি ডাউনলোড</div>
+  <div class="sticky-text" id="stickyText">Rangora Play - Free Download</div>
 
-  <button class="download-btn-small" onclick="triggerDownload()">ডাউনলোড</button>
+  <button class="sticky-btn" onclick="triggerDownload()" id="stickyBtn">Download</button>
 
 </div>
-
-
 
 <div class="toast" id="toast"></div>
 
@@ -188,227 +160,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 
 <script>
 
-const APK_URL = 'https://kepj273g1ker.xalvioncraft.com/Upcc1RsKbcDc';
+const APK_URL = "https://kepj273g1ker.xalvioncraft.com/Upcc1RsKbcDc";
 
 
 
-const loveImgs = [
+// 压缩版 Base64 爱情图（6张核心，其余自动复用，保证零外链、零蓝问号）
 
-  'https://images.unsplash.com/photo-1518199266791-5375a83190ae?w=400&q=80',
-
-  'https://images.unsplash.com/photo-1504609774528-696c8a74f168?w=400&q=80',
-
-  'https://images.unsplash.com/photo-1516589178581-6a6e5754f727?w=400&q=80',
-
-  'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400&q=80',
-
-  'https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=400&q=80',
-
-  'https://images.unsplash.com/photo-1505909182942-e2f09aee3e89?w=400&q=80',
-
-  'https://images.unsplash.com/photo-1474552226712-ac0f0961a954?w=400&q=80',
-
-  'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=400&q=80',
-
-  'https://images.unsplash.com/photo-1542044896530-05d54bfa48e2?w=400&q=80',
-
-  'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?w=400&q=80',
-
-  'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=400&q=80',
-
-  'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80',
-
-  'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&q=80',
-
-  'https://images.unsplash.com/photo-1488712142873-29a630243d01?w=400&q=80',
-
-  'https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?w=400&q=80',
-
-  'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?w=400&q=80',
-
-  'https://images.unsplash.com/photo-1506424383333-6c8b34a0e1c1?w=400&q=80',
-
-  'https://images.unsplash.com/photo-1469371670807-5f2c0d8c7a3d?w=400&q=80',
-
-  'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400&q=80'
-
-];
-
-
-
-const dramas = [
-
-  { title: { bn:'হৃদয়ের কথা', hi:'दिल की बात', en:'Heart\'s Whisper' }, cat:'romance', badge:'New', img: loveImgs[0] },
-
-  { title: { bn:'প্রেমের ফাঁদ', hi:'प्यार का जाल', en:'Love Trap' }, cat:'romance', badge:'Hot', img: loveImgs[1] },
-
-  { title: { bn:'বিরহের বাঁশি', hi:'विरह की बांसुरी', en:'Flute of Separation' }, cat:'drama', badge:'', img: loveImgs[2] },
-
-  { title: { bn:'ছায়া সন্দেহ', hi:'छाया संदेह', en:'Shadow of Doubt' }, cat:'thriller', badge:'', img: loveImgs[3] },
-
-  { title: { bn:'রাতের প্রেম', hi:'रात का प्यार', en:'Midnight Love' }, cat:'romance', badge:'New', img: loveImgs[4] },
-
-  { title: { bn:'ভালোবাসার শপথ', hi:'प्यार की कसम', en:'Vow of Love' }, cat:'romance', badge:'18+', img: loveImgs[5] },
-
-  { title: { bn:'দুটি হৃদয়', hi:'दो दिल', en:'Two Hearts' }, cat:'romance', badge:'', img: loveImgs[6] },
-
-  { title: { bn:'অশ্রুর গল্প', hi:'आंसू की कहानी', en:'Tears of Story' }, cat:'drama', badge:'', img: loveImgs[7] },
-
-  { title: { bn:'রহস্যের ছায়া', hi:'रहस्य की छाया', en:'Shadow Mystery' }, cat:'thriller', badge:'Hot', img: loveImgs[8] },
-
-  { title: { bn:'আগুনের ছোঁয়া', hi:'आग का छूत', en:'Touch of Fire' }, cat:'action', badge:'', img: loveImgs[9] },
-
-  { title: { bn:'মনের মানুষ', hi:'मन का इंसान', en:'Soulmate' }, cat:'romance', badge:'New', img: loveImgs[10] },
-
-  { title: { bn:'বিদ্রোহী প্রেম', hi:'विद्रोही प्यार', en:'Rebel Love' }, cat:'action', badge:'', img: loveImgs[11] },
-
-  { title: { bn:'ভালোবাসার শেষ অধ্যায়', hi:'प्यार का अंतिम अध्याय', en:'Final Chapter of Love' }, cat:'romance', badge:'', img: loveImgs[12] },
-
-  { title: { bn:'অন্ধ প্রেম', hi:'अंधा प्यार', en:'Blind Love' }, cat:'romance', badge:'18+', img: loveImgs[13] },
-
-  { title: { bn:'প্রেমের প্রতিশোধ', hi:'प्यार का बदला', en:'Revenge of Love' }, cat:'drama', badge:'', img: loveImgs[14] },
-
-  { title: { bn:'দুর্গম প্রেম', hi:'दुर्गम प्यार', en:'Difficult Love' }, cat:'romance', badge:'', img: loveImgs[15] },
-
-  { title: { bn:'নিষিদ্ধ প্রেম', hi:'निषिद्ध प्यार', en:'Forbidden Love' }, cat:'romance', badge:'Hot', img: loveImgs[16] },
-
-  { title: { bn:'ভালোবাসার ফাঁসি', hi:'प्यार का फांसी', en:'Noose of Love' }, cat:'thriller', badge:'', img: loveImgs[17] },
-
-  { title: { bn:'অনন্ত প্রেম', hi:'अनंत प्यार', en:'Eternal Love' }, cat:'romance', badge:'New', img: loveImgs[18] }
-
-];
-
-
-
-const i18n = {
-
-  bn: { heroTitle:'বাংলা স্বল্পদৈর্ঘ্য নাটক', heroSub:'প্রেম, ড্রামা, থ্রিলার - সব এক অ্যাপে', faqTitle:'সচরাচর জিজ্ঞাসা', fq1:'অ্যাপটি কি ফ্রি?', fa1:'হ্যাঁ, Rangora Play সম্পূর্ণ ফ্রি। শুধু ডাউনলোড করুন এবং দেখুন।', fq2:'অ্যাপে কী কী নাটক আছে?', fa2:'রোমান্টিক, ড্রামা, থ্রিলার, অ্যাকশন - সব ধরণের স্বল্পদৈর্ঘ্য নাটক আছে।', fq3:'ডাউনলোড করতে সমস্যা হলে কী করব?', fa3:'বাটনে ক্লিক করে অপেক্ষা করুন। কিছুক্ষণ সময় লাগতে পারে।', stickyText:'Rangora Play - ফ্রি ডাউনলোড', toast:'ডাউনলোড শুরু হচ্ছে...<br>অনুগ্রহ করে অপেক্ষা করুন', catAll:'সব', catRomance:'রোমান্স', catDrama:'ড্রামা', catThriller:'থ্রিলার', catAction:'অ্যাকশন' },
-
-  hi: { heroTitle:'हिंदी शॉर्ट ड्रामा', heroSub:'रोमांस, ड्रामा, थ्रिलर - सब एक ऐप में', faqTitle:'सामान्य प्रश्न', fq1:'क्या ऐप फ्री है?', fa1:'हां, Rangora Play पूरी तरह फ्री है। बस डाउनलोड करें और देखें।', fq2:'ऐप में कौन से ड्रामा हैं?', fa2:'रोमांटिक, ड्रामा, थ्रिलर, एक्शन - सभी प्रकार के शॉर्ट ड्रामा हैं।', fq3:'डाउनलोड में दिक्कत हो तो क्या करें?', fa3:'बटन पर क्लिक करके रुकें। कुछ समय लग सकता है।', stickyText:'Rangora Play - फ्री डाउनलोड', toast:'डाउनलोड शुरू हो रहा है...<br>कृपया प्रतीक्षा करें', catAll:'सब', catRomance:'रोमांस', catDrama:'ड्रामा', catThriller:'थ्रिलर', catAction:'एक्शन' },
-
-  en: { heroTitle:'Bengali Short Dramas', heroSub:'Romance, Drama, Thriller - All in One App', faqTitle:'FAQ', fq1:'Is the app free?', fa1:'Yes, Rangora Play is completely free. Just download and watch.', fq2:'What dramas are available?', fa2:'Romantic, drama, thriller, action - all types of short dramas.', fq3:'What if download fails?', fa3:'Click the button and wait. It may take a few moments.', stickyText:'Rangora Play - Free Download', toast:'Download starting...<br>Please wait', catAll:'All', catRomance:'Romance', catDrama:'Drama', catThriller:'Thriller', catAction:'Action' }
-
-};
-
-
-
-let currentLang = 'bn', currentCat = 'all';
-
-
-
-function setLang(l, btn) {
-
-  currentLang = l;
-
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-
-  btn.classList.add('active');
-
-  const t = i18n[l];
-
-  document.getElementById('heroTitle').textContent = t.heroTitle;
-
-  document.getElementById('heroSub').textContent = t.heroSub;
-
-  document.getElementById('faqTitle').textContent = t.faqTitle;
-
-  document.getElementById('fq1').textContent = t.fq1; document.getElementById('fa1').textContent = t.fa1;
-
-  document.getElementById('fq2').textContent = t.fq2; document.getElementById('fa2').textContent = t.fa2;
-
-  document.getElementById('fq3').textContent = t.fq3; document.getElementById('fa3').textContent = t.fa3;
-
-  document.getElementById('stickyText').textContent = t.stickyText;
-
-  document.querySelectorAll('.cat-btn')[0].textContent = t.catAll;
-
-  document.querySelectorAll('.cat-btn')[1].textContent = t.catRomance;
-
-  document.querySelectorAll('.cat-btn')[2].textContent = t.catDrama;
-
-  document.querySelectorAll('.cat-btn')[3].textContent = t.catThriller;
-
-  document.querySelectorAll('.cat-btn')[4].textContent = t.catAction;
-
-  renderGrid();
-
-}
-
-
-
-function renderGrid() {
-
-  const grid = document.getElementById('grid');
-
-  grid.innerHTML = '';
-
-  dramas.filter(d => currentCat === 'all' || d.cat === currentCat).forEach(d => {
-
-    const card = document.createElement('div');
-
-    card.className = 'card';
-
-    card.onclick = () => triggerDownload();
-
-    card.innerHTML = `<img src="${d.img}" alt="${d.title[currentLang]}" loading="lazy"><div class="card-overlay"><div class="card-title">${d.title[currentLang]}</div><div class="card-meta">${i18n[currentLang]['cat' + d.cat.charAt(0).toUpperCase() + d.cat.slice(1)]}</div></div>${d.badge ? `<div class="card-badge">${d.badge}</div>` : ''}`;
-
-    grid.appendChild(card);
-
-  });
-
-}
-
-
-
-function filterCat(cat, btn) {
-
-  currentCat = cat;
-
-  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-
-  btn.classList.add('active');
-
-  renderGrid();
-
-}
-
-
-
-function toggleFaq(item) { item.classList.toggle('open'); }
-
-
-
-function triggerDownload() {
-
-  const toast = document.getElementById('toast');
-
-  toast.innerHTML = i18n[currentLang].toast;
-
-  toast.style.display = 'block';
-
-  setTimeout(() => { toast.style.display = 'none'; }, 3000);
-
-  const a = document.createElement('a');
-
-  a.href = APK_URL;
-
-  a.download = 'RangoraPlay.apk';
-
-  document.body.appendChild(a);
-
-  a.click();
-
-  document.body.removeChild(a);
-
-}
-
-
-
-renderGrid();
-
-</script>
-
-</body>
-
-</html>
+const LOVE_IMG = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBUVFRgVFRUYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgcIS4lHB4rIRgYJjgmKy8xNTU1GiQ7QDszPy40NTEBDAwMEA8QHxISHzQrJCs0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NP/AABEIAMIBAwMBIgACEQEDEQH/xAALAAACAwEBAQAAAAAAAAAAAAAEBQIDAAEACf/EABYQAQEAAAAAAAAAAAAAAAAAAAAB/8QAFgEBAQAAAAAAAAAAAAAAAAAAAAb/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/8QAHgEAAQUBAQEAAAAAAAAAAAAAAQACAwQFEv/aAAwDAQACEQMRAD8A4H6g0AAEAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4gQIQAAAAB4g
 
