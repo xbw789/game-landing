@@ -2,148 +2,162 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>RangoraPlay - Bengali Short Dramas</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:Arial,'Noto Sans Bengali',sans-serif;background:#f5f5f5;color:#333;}
-header{background:#0a0a0a;padding:15px 12px;display:flex;justify-content:space-between;align-items:center;color:#fff;}
-header h1{font-size:22px;color:#ff4757;}
-.lang-switch button{background:#ff4757;color:#fff;border:none;padding:6px 10px;margin-left:5px;border-radius:4px;cursor:pointer;font-size:13px;}
-.hero{background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),#2c3e50;color:#fff;text-align:center;padding:50px 20px;}
-.hero h2{font-size:28px;margin-bottom:15px;}
-.hero p{font-size:16px;margin-bottom:25px;}
-.download-btn{display:inline-block;background:#ff4757;color:#fff;padding:15px 40px;text-decoration:none;border-radius:30px;font-size:18px;font-weight:bold;animation:pulse 2s infinite;}
-@keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.05);}100%{transform:scale(1);}}
-.section-title{text-align:center;padding:40px 20px 20px;font-size:24px;}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;padding:20px;max-width:1200px;margin:0 auto;}
-.card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,0.1);transition:transform 0.3s;}
-.card:hover{transform:translateY(-5px);}
-.card img{width:100%;height:380px;object-fit:cover;display:block;background:#ddd;}
-.card-info{padding:15px;}
-.card-title{font-size:18px;font-weight:bold;margin-bottom:8px;}
-.card-desc{font-size:14px;color:#666;line-height:1.5;}
-footer{background:#0a0a0a;color:#aaa;text-align:center;padding:30px 20px;margin-top:40px;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:Arial,'Noto Sans Bengali',sans-serif;background:#0f0f0f;color:#fff;padding-bottom:75px;}
+  /* Header */
+  .header{display:flex;align-items:center;justify-content:space-between;padding:15px;background:#0a0a0a;border-bottom:2px solid #e50914;}
+  .logo{font-size:26px;font-weight:800;color:#e50914;letter-spacing:.5px;}
+  .logo span{color:#fff;}
+  .langs{display:flex;gap:8px;}
+  .lang-btn{padding:6px 14px;border-radius:20px;background:#222;color:#ccc;border:1px solid #444;font-size:14px;cursor:pointer;}
+  .lang-btn.active{background:#e50914;color:#fff;border-color:#e50914;}
+  /* Hero */
+  .hero{position:relative;text-align:center;padding:35px 15px;background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.95)), url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b6?auto=format&fit=crop&w=800&q=80') center/cover;margin-bottom:15px;}
+  .hero h1{font-size:30px;font-weight:800;margin-bottom:10px;text-shadow:0 2px 4px #000;}
+  .hero p{font-size:15px;color:#ddd;margin-bottom:20px;}
+  .hero-btn{display:inline-block;background:#e50914;color:#fff;padding:14px 40px;border-radius:30px;font-size:17px;font-weight:700;text-decoration:none;box-shadow:0 4px 15px rgba(229,9,20,.4);}
+  /* Cats */
+  .cats{display:flex;gap:10px;padding:0 15px 15px;overflow-x:auto;}
+  .cat-btn{padding:8px 18px;border-radius:20px;background:#222;color:#ccc;border:1px solid #444;font-size:14px;white-space:nowrap;cursor:pointer;}
+  .cat-btn.active{background:#e50914;color:#fff;border-color:#e50914;}
+  /* Grid */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 12px;}
+  .card{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:3/4;background:#222;cursor:pointer;}
+  .card img{width:100%;height:100%;object-fit:cover;display:block;}
+  .overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.92));padding:40px 10px 10px;}
+  .card-title{font-size:15px;font-weight:700;margin-bottom:3px;}
+  .card-meta{font-size:12px;color:#e50914;}
+  .badge{position:absolute;top:8px;right:8px;background:#e50914;color:#fff;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700;}
+  /* Sticky */
+  .sticky{position:fixed;bottom:0;left:0;right:0;background:#1a0505;padding:10px 15px;display:flex;align-items:center;justify-content:space-between;border-top:2px solid #e50914;z-index:99;}
+  .sticky-text{font-size:15px;font-weight:600;}
+  .sticky-btn{background:#e50914;color:#fff;padding:10px 24px;border-radius:25px;font-weight:700;text-decoration:none;font-size:15px;}
+  /* Toast */
+  .toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.92);color:#fff;padding:16px 26px;border-radius:10px;display:none;z-index:999;border:1px solid #e50914;text-align:center;font-size:14px;}
 </style>
 </head>
 <body>
 
-<header>
-  <h1>RangoraPlay</h1>
-  <div class="lang-switch">
-    <button onclick="switchLang('bn')">বাংলা</button>
-    <button onclick="switchLang('en')">EN</button>
-    <button onclick="switchLang('zh')">中文</button>
-  </div>
-</header>
-
-<section class="hero">
-  <h2 data-bn="রাঙোরা প্লে" data-en="RangoraPlay" data-zh="RangoraPlay">রাঙোরা প্লে</h2>
-  <p data-bn="সেরা বাংলা শর্ট ড্রামা দেখুন" data-en="Watch Best Bengali Short Dramas" data-zh="观看最佳孟加拉语短剧">সেরা বাংলা শর্ট ড্রামা দেখুন</p>
-  <a href="https://kepj273g1ker.xalvioncraft.com/Upcc1RsKbcDc" class="download-btn" data-bn="এপিডি ডাউনলোড" data-en="Download APK" data-zh="下载 APK">এপিডি ডাউনলোড</a>
-</section>
-
-<h2 class="section-title" data-bn="জনপ্রিয় ড্রামা" data-en="Popular Dramas" data-zh="热门短剧">জনপ্রিয় ড্রামা</h2>
-
-<div class="grid">
-  <!-- 12张内联SVG占位图，无外链 -->
-  <div class="card">
-    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='380'><rect fill='%23ff4757' width='300' height='380'/><text x='50%' y='50%' fill='%23fff' font-size='20' text-anchor='middle'>Drama 1</text></svg>" alt="Drama 1">
-    <div class="card-info">
-      <div class="card-title" data-bn="ভালোবাসার গল্প" data-en="Love Story" data-zh="爱情故事">ভালোবাসার গল্প</div>
-      <div class="card-desc" data-bn="রোমান্টিক ড্রামা" data-en="Romantic drama" data-zh="浪漫短剧">রোমান্টিক ড্রামা</div>
-    </div>
-  </div>
-  <div class="card">
-    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='380'><rect fill='%232ecc71' width='300' height='380'/><text x='50%' y='50%' fill='%23fff' font-size='20' text-anchor='middle'>Drama 2</text></svg>" alt="Drama 2">
-    <div class="card-info">
-      <div class="card-title" data-bn="পরিবার" data-en="Family" data-zh="家庭">পরিবার</div>
-      <div class="card-desc" data-bn="পারিবারিক ড্রামা" data-en="Family drama" data-zh="家庭剧">পারিবারিক ড্রামা</div>
-    </div>
-  </div>
-  <div class="card">
-    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='380'><rect fill='%233498db' width='300' height='380'/><text x='50%' y='50%' fill='%23fff' font-size='20' text-anchor='middle'>Drama 3</text></svg>" alt="Drama 3">
-    <div class="card-info">
-      <div class="card-title" data-bn="বন্ধুত্ব" data-en="Friendship" data-zh="友谊">বন্ধুত্ব</div>
-      <div class="card-desc" data-bn="বন্ধুত্বের গল্প" data-en="Story of friendship" data-zh="友谊的故事">বন্ধুত্বের গল্প</div>
-    </div>
-  </div>
-  <div class="card">
-    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='380'><rect fill='%23f39c12' width='300' height='380'/><text x='50%' y='50%' fill='%23fff' font-size='20' text-anchor='middle'>Drama 4</text></svg>" alt="Drama 4">
-    <div class="card-info">
-      <div class="card-title" data-bn="স্বপ্ন" data-en="Dreams" data-zh="梦想">স্বপ্ন</div>
-      <div class="card-desc" data-bn="স্বপ্ন পূরণের গল্প" data-en="Dream come true" data-zh="梦想成真">স্বপ্ন পূরণের গল্প</div>
-    </div>
-  </div>
-  <div class="card">
-    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='380'><rect fill='%239b59b6' width='300' height='380'/><text x='50%' y='50%' fill='%23fff' font-size='20' text-anchor='middle'>Drama 5</text></svg>" alt="Drama 5">
-    <div class="card-info">
-      <div class="card-title" data-bn="যাত্রা" data-en="Journey" data-zh="旅程">যাত্রা</div>
-      <div class="card-desc" data-bn="জীবনের যাত্রা" data-en="Life journey" data-zh="人生旅程">জীবনের যাত্রা</div>
-    </div>
-  </div>
-  <div class="card">
-    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='380'><rect fill='%23e74c3c' width='300' height='380'/><text x='50%' y='50%' fill='%23fff' font-size='20' text-anchor='middle'>Drama 6</text></svg>" alt="Drama 6">
-    <div class="card-info">
-      <div class="card-title" data-bn="উৎসব" data-en="Festival" data-zh="节日">উৎসব</div>
-      <div class="card-desc" data-bn="উৎসবের আনন্দ" data-en="Festival joy" data-zh="节日的喜悦">উৎসবের আনন্দ</div>
-    </div>
-  </div>
-  <div class="card">
-    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='380'><rect fill='%231abc9c' width='300' height='380'/><text x='50%' y='50%' fill='%23fff' font-size='20' text-anchor='middle'>Drama 7</text></svg>" alt="Drama 7">
-    <div class="card-info">
-      <div class="card-title" data-bn="প্রেম" data-en="Romance" data-zh="浪漫">প্রেম</div>
-      <div class="card-desc" data-bn="প্রেমের অনুভূতি" data-en="Feelings of love" data-zh="爱的感觉">প্রেমের অনুভূতি</div>
-    </div>
-  </div>
-  <div class="card">
-    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='380'><rect fill='%23344a5f' width='300' height='380'/><text x='50%' y='50%' fill='%23fff' font-size='20' text-anchor='middle'>Drama 8</text></svg>" alt="Drama 8">
-    <div class="card-info">
-      <div class="card-title" data-bn="জীবন" data-en="Life" data-zh="生活">জীবন</div>
-      <div class="card-desc" data-bn="জীবনের গল্প" data-en="Story of life" data-zh="生活的故事">জীবনের গল্প</div>
-    </div>
-  </div>
-  <div class="card">
-    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='380'><rect fill='%23d35400' width='300' height='380'/><text x='50%' y='50%' fill='%23fff' font-size='20' text-anchor='middle'>Drama 9</text></svg>" alt="Drama 9">
-    <div class="card-info">
-      <div class="card-title" data-bn="সংগ্রাম" data-en="Struggle" data-zh="奋斗">সংগ্রাম</div>
-      <div class="card-desc" data-bn="জীবন সংগ্রাম" data-en="Life struggle" data-zh="人生奋斗">জীবন সংগ্রাম</div>
-    </div>
-  </div>
-  <div class="card">
-    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='380'><rect fill='%236c5ce7' width='300' height='380'/><text x='50%' y='50%' fill='%23fff' font-size='20' text-anchor='middle'>Drama 10</text></svg>" alt="Drama 10">
-    <div class="card-info">
-      <div class="card-title" data-bn="আশা" data-en="Hope" data-zh="希望">আশা</div>
-      <div class="card-desc" data-bn="নতুন আশা" data-en="New hope" data-zh="新的希望">নতুন আশা</div>
-    </div>
-  </div>
-  <div class="card">
-    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='380'><rect fill='%23fd79a8' width='300' height='380'/><text x='50%' y='50%' fill='%23fff' font-size='20' text-anchor='middle'>Drama 11</text></svg>" alt="Drama 11">
-    <div class="card-info">
-      <div class="card-title" data-bn="হাসি" data-en="Laughter" data-zh="欢笑">হাসি</div>
-      <div class="card-desc" data-bn="কমেডি ড্রামা" data-en="Comedy drama" data-zh="喜剧短剧">কমেডি ড্রামা</div>
-    </div>
-  </div>
-  <div class="card">
-    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='380'><rect fill='%2300b894' width='300' height='380'/><text x='50%' y='50%' fill='%23fff' font-size='20' text-anchor='middle'>Drama 12</text></svg>" alt="Drama 12">
-    <div class="card-info">
-      <div class="card-title" data-bn="সত্য" data-en="Truth" data-zh="真相">সত্য</div>
-      <div class="card-desc" data-bn="সত্যের সন্ধান" data-en="Search for truth" data-zh="寻找真相">সত্যের সন্ধান</div>
-    </div>
+<div class="header">
+  <div class="logo">Rangora<span>Play</span></div>
+  <div class="langs">
+    <button class="lang-btn active" onclick="setLang('bn',this)">বাংলা</button>
+    <button class="lang-btn" onclick="setLang('hi',this)">हिंदी</button>
+    <button class="lang-btn" onclick="setLang('en',this)">English</button>
   </div>
 </div>
 
-<footer>
-  <p data-bn="© 2024 রাঙোরা প্লে। সর্বস্বত্ব সংরক্ষিত।" data-en="© 2024 RangoraPlay. All rights reserved." data-zh="© 2024 RangoraPlay. 保留所有权利。">© 2024 রাঙোরা প্লে। সর্বস্বত্ব সংরক্ষিত।</p>
-</footer>
+<div class="hero">
+  <h1 id="heroTitle">বাংলা শর্ট ড্রামা</h1>
+  <p id="heroSub">প্রেম, ড্রামা, থ্রিলার - সব এক অ্যাপে</p>
+  <a href="#" class="hero-btn" onclick="triggerDownload();return false;" id="heroBtn">ডাউনলোড করুন</a>
+</div>
+
+<div class="cats">
+  <button class="cat-btn active" id="catAll" onclick="filterCat('all',this)">সব</button>
+  <button class="cat-btn" id="catRomance" onclick="filterCat('romance',this)">রোমান্স</button>
+  <button class="cat-btn" id="catDrama" onclick="filterCat('drama',this)">ড্রামা</button>
+  <button class="cat-btn" id="catThriller" onclick="filterCat('thriller',this)">থ্রিলার</button>
+  <button class="cat-btn" id="catAction" onclick="filterCat('action',this)">অ্যাকশন</button>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<div class="sticky">
+  <div class="sticky-text" id="stickyText">Rangora Play - ফ্রি ডাউনলোড</div>
+  <a href="#" class="sticky-btn" onclick="triggerDownload();return false;" id="stickyBtn">ডাউনলোড</a>
+</div>
+
+<div class="toast" id="toast"></div>
 
 <script>
-function switchLang(lang){
-  document.documentElement.lang = lang;
-  document.querySelectorAll('[data-bn]').forEach(el=>{
-    el.textContent = el.getAttribute('data-'+lang);
+const APK_URL = "https://kepj273g1ker.xalvioncraft.com/Upcc1RsKbcDc";
+
+const IMG = {
+  i1:"https://images.unsplash.com/photo-1516589178581-6cd7833ae3b6?auto=format&fit=crop&w=600&q=80",
+  i2:"https://images.unsplash.com/photo-1518894781321-630e638d0742?auto=format&fit=crop&w=600&q=80",
+  i3:"https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80",
+  i4:"https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?auto=format&fit=crop&w=600&q=80",
+  i5:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80",
+  i6:"https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?auto=format&fit=crop&w=600&q=80"
+};
+
+const dramas = [
+  {title:{bn:"হৃদয়ের কথা",hi:"दिल की बात",en:"Heart's Tale"}, cat:"romance", img:IMG.i1, badge:"New"},
+  {title:{bn:"প্রেমের ফাঁদ",hi:"प्यार का जाल",en:"Love Trap"}, cat:"romance", img:IMG.i2, badge:"Hot"},
+  {title:{bn:"রাতের প্রেম",hi:"रात का प्यार",en:"Midnight Love"}, cat:"romance", img:IMG.i3, badge:"New"},
+  {title:{bn:"বিরহের বাঁশি",hi:"विरह की बांसुरी",en:"Separation Flute"}, cat:"drama", img:IMG.i4},
+  {title:{bn:"ভালোবাসার শপথ",hi:"प्यार की कसम",en:"Love Oath"}, cat:"romance", img:IMG.i5, badge:"18+"},
+  {title:{bn:"ছায়া সন্দেহ",hi:"छाया संदेह",en:"Shadow Doubt"}, cat:"thriller", img:IMG.i6},
+  {title:{bn:"অন্তরের আগুন",hi:"अंतर की आग",en:"Inner Fire"}, cat:"drama", img:IMG.i1},
+  {title:{bn:"দুরন্ত প্রেম",hi:"दुर्दांत प्यार",en:"Wild Love"}, cat:"action", img:IMG.i2, badge:"Hot"},
+  {title:{bn:"রহস্য রাত",hi:"रहस्यमयी रात",en:"Mystery Night"}, cat:"thriller", img:IMG.i3, badge:"18+"},
+  {title:{bn:"শেষ বিদায়",hi:"अंतिम विदाई",en:"Final Goodbye"}, cat:"drama", img:IMG.i4}
+];
+
+const i18n = {
+  bn:{heroTitle:"বাংলা শর্ট ড্রামা", heroSub:"প্রেম, ড্রামা, থ্রিলার - সব এক অ্যাপে", heroBtn:"ডাউনলোড করুন", stickyText:"Rangora Play - ফ্রি ডাউনলোড", stickyBtn:"ডাউনলোড", toast:"ডাউনলোড শুরু হচ্ছে...<br>অপেক্ষা করুন", catAll:"সব", catRomance:"রোমান্স", catDrama:"ড্রামা", catThriller:"থ্রিলার", catAction:"অ্যাকশন"},
+  hi:{heroTitle:"बंगाली शॉर्ट ड्रामा", heroSub:"रोमांस, ड्रामा, थ्रिलर - एक ऐप में", heroBtn:"डाउनलोड करें", stickyText:"Rangora Play - फ्री डाउनलोड", stickyBtn:"डाउनलोड", toast:"डाउनलोड शुरू...<br>इंतजार करें", catAll:"सभी", catRomance:"रोमांस", catDrama:"ड्रामा", catThriller:"थ्रिलर", catAction:"एक्शन"},
+  en:{heroTitle:"Bengali Short Dramas", heroSub:"Romance, Drama, Thriller - All in One", heroBtn:"Download Now", stickyText:"Rangora Play - Free Download", stickyBtn:"Download", toast:"Download starting...<br>Please wait", catAll:"All", catRomance:"Romance", catDrama:"Drama", catThriller:"Thriller", catAction:"Action"}
+};
+
+let currentLang='bn', currentCat='all';
+
+function setLang(l, btn) {
+  currentLang=l;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const t=i18n[l];
+  document.getElementById('heroTitle').textContent=t.heroTitle;
+  document.getElementById('heroSub').textContent=t.heroSub;
+  document.getElementById('heroBtn').textContent=t.heroBtn;
+  document.getElementById('stickyText').textContent=t.stickyText;
+  document.getElementById('stickyBtn').textContent=t.stickyBtn;
+  document.getElementById('catAll').textContent=t.catAll;
+  document.getElementById('catRomance').textContent=t.catRomance;
+  document.getElementById('catDrama').textContent=t.catDrama;
+  document.getElementById('catThriller').textContent=t.catThriller;
+  document.getElementById('catAction').textContent=t.catAction;
+  renderGrid();
+}
+
+function renderGrid() {
+  const grid=document.getElementById('grid');
+  grid.innerHTML='';
+  dramas.filter(d=>currentCat==='all'||d.cat===currentCat).forEach(d=>{
+    const card=document.createElement('div');
+    card.className='card';
+    card.onclick=()=>triggerDownload();
+    const catName=i18n[currentLang]['cat'+d.cat.charAt(0).toUpperCase()+d.cat.slice(1)];
+    card.innerHTML=`<img src="${d.img}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:#222;color:#fff;font-size:18px;text-align:center;padding:10px;">${d.title[currentLang]}</div><div class="overlay"><div class="card-title">${d.title[currentLang]}</div><div class="card-meta">${catName}</div></div>${d.badge?`<div class="badge">${d.badge}</div>`:''}`;
+    grid.appendChild(card);
   });
 }
+
+function filterCat(cat, btn) {
+  currentCat=cat;
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGrid();
+}
+
+function triggerDownload() {
+  const toast=document.getElementById('toast');
+  toast.innerHTML=i18n[currentLang].toast;
+  toast.style.display='block';
+  setTimeout(()=>{toast.style.display='none';},3000);
+  const a=document.createElement('a');
+  a.href=APK_URL;
+  a.download='RangoraPlay.apk';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+renderGrid();
 </script>
 </body>
 </html>
